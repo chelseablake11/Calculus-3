@@ -1,0 +1,613 @@
+\documentclass[11pt]{article}
+
+\usepackage{epsfig}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{theorem}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{color}
+\usepackage{pgfplots}
+
+\definecolor{stainlessSteel}{cmyk}{0,0,0.02,0.12}
+%\usepackage{layout}% if you want to see the layout parameters
+                     % and now use \layout command in the body
+
+% This is the stuff for normal spacing
+\makeatletter
+ \setlength{\textwidth}{6.5in}
+ \setlength{\oddsidemargin}{0in}
+ \setlength{\evensidemargin}{0in}
+ \setlength{\topmargin}{0.25in}
+ \setlength{\textheight}{8.25in}
+ \setlength{\headheight}{0pt}
+ \setlength{\headsep}{0pt}
+ \setlength{\marginparwidth}{59pt}
+
+ \setlength{\parindent}{0pt}
+ \setlength{\parskip}{5pt plus 1pt}
+ \setlength{\theorempreskipamount}{5pt plus 1pt}
+ \setlength{\theorempostskipamount}{0pt}
+ \setlength{\abovedisplayskip}{8pt plus 3pt minus 6pt}
+ \setlength{\intextsep}{15pt plus 3pt minus 6pt}
+
+ \renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                   {2ex plus -1ex minus -.2ex}%
+                                   {1.3ex plus .2ex}%
+                                   {\normalfont\Large\bfseries}}%
+ \renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\large\bfseries}}%
+ \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+ \renewcommand\paragraph{\@startsection{paragraph}{4}{0mm}%
+                                    {1ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+ \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {2.0ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\newcounter{thelecture}
+
+\newenvironment{proof}{{\bf Proof:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofof}[1]{{\bf Proof of #1:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofofnobox}[1]{{\bf#1:  }}{}
+\newenvironment{example}{{\bf Example:  }}{\hfill\rule{0mm}{0mm}} % change 2mm 2mm for square
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}[fact]{Lemma}
+\newtheorem{theorem}[fact]{Theorem}
+\newtheorem{definition}[fact]{Definition}
+\newtheorem{corollary}[fact]{Corollary}
+\newtheorem{proposition}[fact]{Proposition}
+\newtheorem{claim}[fact]{Claim}
+\newtheorem{exercise}[fact]{Exercise}
+
+% math notation
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\N}{\ensuremath{\mathbb N}}
+\newcommand{\B}{\ensuremath{\mathbb B}}
+\newcommand{\F}{\ensuremath{\mathcal F}}
+\newcommand{\SymGrp}{\ensuremath{\mathfrak S}}
+\newcommand{\prob}[1]{\ensuremath{\text{{\bf Pr}$\left[#1\right]$}}}
+\newcommand{\expct}[1]{\ensuremath{\text{{\bf E}$\left[#1\right]$}}}
+\newcommand{\size}[1]{\ensuremath{\left|#1\right|}}
+\newcommand{\ceil}[1]{\ensuremath{\left\lceil#1\right\rceil}}
+\newcommand{\floor}[1]{\ensuremath{\left\lfloor#1\right\rfloor}}
+\newcommand{\ang}[1]{\ensuremath{\langle{#1}\rangle}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\polylog}{\operatorname{polylog}}
+
+% anupam's abbreviations
+\newcommand{\e}{\epsilon}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\junk}[1]{}
+\newcommand{\sse}{\subseteq}
+\newcommand{\union}{\cup}
+\newcommand{\meet}{\wedge}
+\newcommand{\dist}[1]{\|{#1}\|_{\text{dist}}}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\embeds}[1]{\;\lhook\joinrel\xrightarrow{#1}\;}
+\newcommand{\mnote}[1]{\normalmarginpar \marginpar{\tiny #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document begins here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hwheadings}[3]{
+{\bf Calculus 200 -  Fall 2015} \hfill {{\bf Exam 2 study guide}}\\
+{{\bf } #2} \hfill {{\bf Due:} #3} \\
+\rule[0.1in]{\textwidth}{0.025in}
+%\thispagestyle{empty}
+}
+\begin{document}
+\hwheadings{4}{13.2-14.8}{Nov 11, 2015}
+
+\begin{enumerate}
+
+\item 13.2 \textbf{Calculus with vector functions}
+\\
+$T = \frac{r'}{|r'|} \; \; \; \cod \theta= \frac{r' s'}{|r'||s'|}$
+\\
+
+
+
+
+
+\item 14.1  \textbf{Functions of several variables}
+
+
+
+
+\item 14.2 \textbf{Limits and Continuity}
+\\
+\begin{center}
+\textit{definition:} Suppose $f(x,y)$ is a function. We say that
+\\
+$\lim \limits_{(x,y) \to (a,b)} f(x,y)=L$
+\\
+if for ever $ \epsilon > 0$ there is a $\delta > 0$ so that whenever $0< \sqrt{(x-a)^2+(y-b)^2}<\delta, \; \; |f(x,y)-L|< \epsilon$.
+\end{center}
+
+\\
+\begin{center}
+\textit{theorem:}
+\\
+If $|f(x,y)=L| \le g(x,y) \forall (x,y)$ in a circle centered around $(a,b)$ and 
+\\
+$\lim \limits_{(x,y) \to (a,b)} g(x,y)=0$
+\\
+then $\lim \limits_{(x,y) \to (a,b)} f(x,y)=L$
+
+
+\end{center}
+\\
+\begin{proof}
+Let $\epsilon >0$, since 
+$\lim \limits_{(x,y) \to (a,b)} g(x,y)=0$
+$\exists \delta >0 : |g(x,y)-0|<\epsilon$ whenever
+$\sqrt{(x-a)^2+(y-b)^2}< \delta$.
+\\
+But we also have $|f(x,y)-L| \le g(x,y) , \epsilon$
+\\
+$|(x,y)-L|< \epsilon$ when $\sqrt{(x-a)^2+(y-b)^2}< \delta$
+\\
+To use the theorem, find $g(x,y) \ge |f(x,y)-L|$ who's limit is zero.
+\\
+\end{proof}
+
+\begin{center}
+\textit{Example:}
+Find and prove the $\lim \limits_{(x,y) \to (0,0)} \frac{x^2y}{x^2+y^2}$ or disprove if the limit DNE.
+\\
+let $x=0$ and $y \to 0 \; \; \; f(0,y)=\frac{0}{y^2}=0 $ therefore $f \to 0$ as $y \to 0$
+\\
+Let $x \to 0$ and $y=0 \; \; \; f(x,0)=\frac{0}{x^2}=0$ therefore $f \to 0$ as $x \to 0$
+\\
+Let $x=y \; \; \; f(x,x)= \frac{x^3}{2x^2}=\frac{x}{2} \; \; \; f \to 0$ as $x \to 0$
+\\
+$|f(x,y)-L|=|f(x,y)-0|=|f(x,y)|=|\frac{x^2y}{x^2+y^2}|=\frac{x^2}{x^2+y^2}|y| \le |y|= g(x,y)$
+\\
+$\lim \limits_{(y) \to (0)} |y|=0$
+\\
+Therefore we proved that $\lim \limits_{(x,y) \to (0,0)} \frac{x^2y}{x^2+y^2}=0$
+
+
+\end{center}
+\\
+\textit{definition:} $f(x,y)$ is continuous at $(a,b)$ if $\lim \limits_{(x,y) \to (a,b)} f(x,y)=(a,b)$
+\\
+-all polynomials are continuous
+\\
+-all rational functions are continuous on there domain
+\\
+-ln is continuous on its domain
+
+
+
+
+
+
+
+
+
+
+\item 14.3 Partial derivatives
+\\
+$\frac{\partial f}{\partial x}=f_x= \lim \limits_{h \to 0} \frac{f(x+h,y)-f(x,y)}{h}$
+\\
+$\frac{\partial^2 f}{\partial^2 x}=f_{xx}$
+\\
+$f_{xy}=f_{yx}$ if the function is continuous. 
+\\
+\begin{center}
+\textit{Example:}
+In a chemical reaction, the temperature $T$, entropy $S$, Gibbs free enger $G$, and enthalpy $H$ are related by $G = H - TS$.  Show that $\frac{\partial(G/T)}{\partial T} =  - \frac{H}{T^2}$.
+    \\
+   
+    \\
+    $G=H-TS$
+    \\
+    $(G/T)=\frac{H}{T}-S$
+    \\
+    $\frac{\partial(G/T)}{\partial T}=-\frac{H}{T^2}$
+
+
+\end{center}
+
+
+
+
+
+\item 14.4 The Chain Rule
+
+\textit{Taylor Series:} 
+$z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$
+\\
+\textit{Mean Value theorem:}
+There is at least one point $c \in (a,b)$ where the slope of the tangent line at $c$ equals the slope of the secant line from $(a,f(a))$ to $(b,f(b))$
+\\
+$f'(c)=\frac{f(b)-f(a)}{b-a} \rightarrow f(b)-f(a)=f'(c)[b-a] \rightarrow \Delta y = f'(c) \Delta x \rightaarow f'(c)=\frac{\delta y}{\delta x}$
+\\
+\textit{tangent line:} $n_1(x-a)+n_2(y-b)+n_3(z-c)=0$ at the point $(a,b,f(a,b))$ with the normal vector $\langle n_1, n_2, n_3 \rangle$
+\\
+\begin{center}
+\textit{theorem:} 
+suppose that $z=f(x,y)$, $f$ is differentiable, $x=g(t)$ and $y=h(t)$ Assuming that the relevant derivatives exist,
+\\
+$\frac{dz}{dt}=\frac{\partial z}{\partial x}\frac{dx}{dt}+\frac{\partial z}{\partial y} \frac{dy}{dt}$
+\\
+\begin{proof}
+If $f$ is differentiable, then
+\\
+$\Delta z= f_x (x_0,y_0) \Delta x+ f_y (x_0,y_0) \Delta y + \epsilon_1 \Deta x + \epsilon_2 \Delta y$
+\\
+Where $\epsilon_1$ and $\epsilon_2$ approuch $0$ as $(x,y)$ approaches $(x_0,y_0)$. Then
+\\
+$\frac{\Delta z}{\Delta t}=f_x\frac{\Delta x}{\Delta t}+ f_y \frac{\Delta y}{\Delta t}+\epsilon_1 \frac{\Delta x}{\Delta t}+ \epsilon_2 \frac{\Delta y}{\Delta t}$.
+\\
+As $\Delta t$ approaches $0$, $(x,y)$ approaches $(x_0,y_0)$ and so
+\\
+$\lim \limits_{\Delta t \to 0} \frac{\Delta z}{\Delta t}=\frac{dz}{dt}$
+\\
+$\lim \limits_{\Delta t \to 0} \epsilon_1 \frac{\Delta x}{\Delta t}= 0 \frac{dx}{dt}$
+\\
+$\lim \limits_{\Delta t \to 0} \epsilon_2 \frac{\Delta y}{\Delta t}= 0 \frac{dy}{dt}$
+\\
+And so taking the limit as $\Delta t$ goes to $0$ gives
+\\
+$\frac{dz}{dt}=f_x\frac{dx}{dt}+f_y \frac{dy}{dt}$
+
+
+\end{proof}
+
+
+\end{center}
+
+
+\textit{Example:}
+\\
+ Suppose $f(x,y) = x^2 e^y$, $x(t) = t^2 - 1$, and $y(t) = \sin t$, find the derivative of $g(t) = f(x(t), y(t))$.
+    \\
+    \textit{Answer:}
+\\
+$g(t)'=\frac{\partial g(t)}{\partial x} \frac{dx}{dt} + \frac{\partial g(t)}{\partial y} \frac{dy}{dt}$
+\\
+$\frac{\partial g(t)}{\partial x}= 2xe^y$
+\\
+$\frac{\partial g(t)}{\partial y}= x^2e^y$
+\\
+$\frac{dx}{dt}=2t$
+\\
+$\frac{dy}{dt}= \cos (t)$
+\\
+Therefore
+\\
+$g(t)'=(2xe^y)(2t)+(x^2e^y)(\cos (t)= 4txe^y+x^2e^y \cos (t)$
+
+
+
+\\
+
+
+\textit{multi-points}
+\\
+$x=x(s,t) \; \; \; y=y(s,t) \; \; \; z=f(x,y)$
+\\
+$\frac{\partial z}{\partial s}= \frac{\partial z}{\partial x}\frac{\partial x}{\partial s}+ \frac{\partial z}{\partial y} \frac{\partial y}{\partial y}{\partial s}$
+\\
+$\frac{\partial z}{\partial t}= \frac{\partial z}{\partial x}\frac{\partial x}{\partial t}+ \frac{\partial z}{\partial y} \frac{\partial y}{\partial y}{\partial t}$
+
+\\
+
+\textit{Example:}
+\\
+Suppose $f(x,y) = e^{xy}$, $x(u,v) = 3u \sin v$ and $y(u,v) = 4v^2u$.  For $g(u,v) = f(x(u,v), y(u,v))$, find the partial derivatives $\frac{\partial g}{\partial u}$ and $\frac{\partial g}{\partial v}$.
+    \\
+    \textbf{Answer:}
+    \\
+    $\frac{\partial g}{\partial u}=\frac{\partial g}{\partial x} \frac{\partial x}{\partial u}+ \frac{\partial g}{\partial y} \frac{\partial y}{\partial u}$
+    \\
+    $\frac{\partial g}{\partial x}=ye^{xy}$
+    \\
+    $\frac{\partial x}{\partial u}=3 \sin (v)$
+    \\
+    $\frac{\partial g}{\partial y}=xe^{xy}$
+    \\
+    $\frac{\partial y}{\partial u}=4v^2$
+    \\
+    $\frac{\partial g}{\partial u}=(ye^{xy})(3 \sin (v))+(=xe^{xy})(4v^2)$
+    
+    \\
+    \\
+    $\frac{\partial g}{\partial v}=\frac{\partial g}{\partial x}\frac{\partial x}{\partial v}+\frac{\partial g}{\partial y}\frac{\partial y}{\partial v}$
+    \\
+    $\frac{\partial g}{\partial x}=ye^{xy}$
+    \\
+    $\frac{\partial x}{\partial v}=3u \cos(v)$
+    \\
+    $\frac{\partial g}{\partial y}=xe^{xy}$
+    \\
+    $\frac{\partial y}{\partial v}=8vu$
+    \\
+    $\frac{\partial g}{\partial v}=(ye^{xy})(3u \cos(v))+ (xe^{xy}) (8vu) $
+
+
+
+\item 14.5 \textbf{Directional Derivatives}
+\\
+\begin{center}
+\textit{Definition:}
+Directional derivative of $z=f(x,y)$ at point $(a,b)$ in the direction at $u$ (unit vector) $\langle u_1, u_2 \rangle$
+\\
+$D_u f (a,b)= f_x u_1 + f_y u_2 = \langle f_x, f_y \rangle \cdot \langle u_1, u_2 \rangle = \nabla f \cdot u= |\nabla f||u| \cos \theta= |\nabla f| \cos \theta$
+\end{center}
+\\
+\textit{Example:}
+\\
+ Find the directional derivative $D_{{\bf u}}f(1, -1)$ when $f(x,y) = x^2 + y^2$ for ${\bf u}$ in the direction $\langle -3, 4 \rangle$. 
+    \\
+    \textit{Answer:}
+    \\
+    Make the direction vector into a directional unit vector by setting ${\bf u}=\frac{\bf u}{||u||}$
+    \\
+    $\langle \frac{-3}{5}, \frac{4}{5} \rangle$
+    \\
+    
+    $D_{{\bf u}}f(a, b)=f_x u_1+f_y u_2$ where $u_1,u_2$ at the components of the direction unit vector. Therefore:
+    \\
+    $D_{{\bf u}}f(1, -1)=f_x(\frac{-3}{5})+f_y(\frac{4}{5})$
+    \\
+    $f_x=2x$
+    \\
+    $f_y=2y$
+    \\
+    $D_{{\bf u}}f(1, -1)=2x(\frac{-3}{5})+2y(\frac{4}{5})=\frac{-6}{5}x+\frac{8}{5}y$
+    
+    
+    
+    \\
+    \\
+    \textit{Example:}
+    \\
+    Find the directional derivative of $f(x,y) = x^3y^4+x^4y^3$ at the point $(1,1)$ in the direction $\theta =\pi/6$.
+    \\
+    \textit{Answer:}
+    \\
+    $D_uf(a,b)= \langle f_x, f_y \rangle \cdot \langle u_1,u_2 \rangle$
+    \\
+    $\nabla f \cdot u= ||f|| \times ||u|| \times \cos \theta$
+    \\
+    $f_x=3x^2y^4+4x^3y^3$
+    \\
+    $f_y=4y^3x^3+3y^2x^4$
+    \\
+    $\nabla f= \langle 3x^2y^4+4x^3y^3, 4y^3x^3+3y^2x^4 \rangle$
+    \\
+    $\nabla f(1,1)= \langle 3(1)^2(1)^4+4(1)^3(1)^3, 4(1)^3(1)^3+3(1)^2(1)^4 \rangle$
+    \\
+     $\nabla f(1,1)= \langle 7,7 \rangle$
+     \\
+     $||\nabla f(1,1)||=\sqrt{98}$
+     \\
+     $||u||=1$ because $||u||$ is a unit vector.
+     \\
+     $D_uf(1,1)= \sqrt{98} \times 1 \times \cos{\pi/6}= \sqrt{98} \times \frac{\sqrt{3}}{2}= \frac{\sqrt{294}}{2} $
+     
+     \\
+     
+     \\
+     
+     \begin{proof}
+     
+   \item Prove that $f$ is a differentiable function of two or three variables then the maximum value of the directional derivative $D_{\bf u}f({\bf x})$ is $| \nabla f({\bf x})|$ and occurs when ${\bf u}$ is in the direction of the gradient vector.
+   \\
+   \textit{Answer:}
+   \\
+   We know that $D_uf(a,b)= \langle f_x, f_y \rangle \cdot \langle u_1,u_2 \rangle$ or $D_uf(a,b)= ||\langle f_x, f_y \rangle|| \times ||u|| \times \cos \theta$ We also know that $||u||=1$ because $u$ is the unit vector. Finally, we know that $-1 \ge \cos \theta \le 1$.
+   \\
+   We can simplify $D_uf(a,b)$ to $D_uf(a,b)= ||\nabla f(x)|| \times \cos \theta$  
+   \\
+   If we take the max of $D_uf(a,b)$ we will see that the max of $\cos \theta =1$ and therefore the max of $D_uf(a,b)= ||\nabla f(x)||$. 
+   \\
+   This max occurs when the $\cos \theta =1$ and we know this happens when $\theta = 0$. $\theta$ is the angle between $u$ and the gradient vector, therefore if $u$ is in the direction of the gradient vector $\theta$ will be $0$, the $\cos \theta =1$ and $D_uf(a,b)= ||\nabla f(x)||$. 
+     
+     
+     \end{proof}
+
+
+
+
+
+\item 14.6 \textbf{Higher order Derivations}
+\\
+\textit{Critical points:}
+$(a,b)$ is a critical point of $f(x,y)$ if $f_x(a,b)=f_y(a,b)=0$ or one or both partial derivatives do not exist.
+\\
+\textit{Example:}
+\\
+Find all critical points of $f(x,y)=x^2+xy+y^2+y$
+\\
+$f_x(x,y)=2x+y \; \; \; f_y(x,y)=x+2y+1$
+\\
+$2x+y=0 \rightarrow y=-2x$
+\\
+$x+2y+=0 \rightarrow x+2(-2x)+1=0 \rightarrow x-4x+1=0 \rightarrow -3x=-1$
+\\
+$x=\frac{1}{3} \; \; \; y=\frac{2}{3}$
+
+
+
+
+
+
+\item 14.7 \textbf{Maxima and Minima}
+\\
+\textit{Definition:}
+A local max occurs at $(a,b)$ if $f(a,b) \ge f(x,y) \forall (x,y) \in D ((a,b),r)$
+\\
+\textit{Definition:}
+A local max occurs at $(a,b)$ if $f(a,b) \le f(x,y) \forall (x,y) \in D ((a,b),r)$
+
+\textbf{Every max and min is a critical point but not every critical point is a max or min}
+\\
+\textit{theorem}
+\\
+Suppose that the second partial derivatives of $f(x,y)$ are continuous near $(x_0,y_0)$, and $f_x(x_0,y_0)=f_y(x_0,y_0)=0$. We denote by $D$ the discriminant.
+\\
+$D(x_0,y0)=f_{xx}(x_0,y_0)f_{yy}(x_0,y_0)-f_{xy}(x_0,y_0)^2$.
+\begin{center}
+if $f_x(x_0,y_0)=0=f_y(x_0,y_0$ and:
+\\
+$D(x_0,y0)=f_{xx}(x_0,y_0)f_{yy}(x_0,y_0)-f_{xy}(x_0,y_0)^2 > 0$ and $f_{xx}<0$ there is a max at $(x_0,y_0)$
+\\
+$D(x_0,y0)=f_{xx}(x_0,y_0)f_{yy}(x_0,y_0)-f_{xy}(x_0,y_0)^2 > 0$ and $f_{xx}>0$ there is a min at $(x_0,y_0)$
+\\
+$D(x_0,y0)=f_{xx}(x_0,y_0)f_{yy}(x_0,y_0)-f_{xy}(x_0,y_0)^2 < 0$ there is a saddle point at $(x_0,y_0)$
+\\
+$D(x_0,y0)=f_{xx}(x_0,y_0)f_{yy}(x_0,y_0)-f_{xy}(x_0,y_0)^2 = 0$ the test fails.
+
+
+
+
+\end{center}
+
+\\
+\textit{Example:}
+\\
+Find and classify all critical points of $f(x,y)=x^2+xy+y^2+y$
+\\
+$f_x(x,y)=2x+y \; \; \; f_y(x,y)=x+2y+1$
+\\
+$2x+y=0 \rightarrow y=-2x$
+\\
+$x+2y+=0 \rightarrow x+2(-2x)+1=0 \rightarrow x-4x+1=0 \rightarrow -3x=-1$
+\\
+$x=\frac{1}{3} \; \; \; y=-\frac{2}{3}$
+\\
+$f_{xx}=2 \; \;f_{yy}=2 \; \; f_{xy}=1 \; \; f_{yx}=1$
+\\
+$D(x_0,y_0)=f_{xx}(x_0,y_0)f_{yy}(x_0,y_0)-f_{xy}(x_0,y_0)^2=2 \times 2 - 1^2 =3$
+\\
+$D>0 \; \; f_{xx} >0 \; \; (\frac{1}{3},-\frac{2}{3}$ is a min.
+\\
+
+\\
+\textit{Example:}
+
+
+
+
+
+\textit{Extreme Value Theorem:}
+If $f(x,y)$ is continuous on a closed bounded region $D \le \mathbb{R} \times \mathbb{R} \approx \mathbb{R}^2$ 
+\\
+Then $f$ attains its absolute max and min either at the critical points or on thee boundary.
+
+\\
+\textit{Example:} Find points on $x-2y+3z=6$ closest to $(0,1,1)$
+\\
+Distance function:
+$d(0,1,1),(x,y,z)=\sqrt{(x)^2+(y-1)^2+(z-1)^2$
+\\
+$x-2y+3z=6 \rightarrow z=2-\frac{1}{3}x+{2}{3}y$
+\\
+$d=\sqrt{(x)^2+(y-1)^2+(2-\frac{1}{3}x+{2}{3}y-1)^2$
+\\
+$f_x=\frac{20}{9}x-\frac{2}{3}-\frac{4}{9}y=0 $
+\\
+$f_y=\frac{26}{9}y-\frac{2}{3}-\frac{4}{9}x=0$
+\\
+$(\frac{3}{10}+\frac{5}{63},\frac{25}{63}$
+\\
+$f_{xx}=\frac{20}{9} >0 \; \; \; f_{yy}=\frac{26}{9} \; \; \; f_{xy}= -\frac{4}{9}$
+\\
+$D=\frac{20}{9} \frac{26}{9} - (-\frac{4}{9})^2=\frac{505}{81}>0 \rightarrow$ min
+
+
+
+
+
+
+\\
+ Find the absolute maximum and minimum values of $f(x,y) = x^2 +y^2 - 2x$ on the closed triangle region with vertices $(2,0), (0,2)$, and $(0,-2)$.
+    \\
+    \textit{Answer:}
+    \\
+    $f_x=2x-2=0 \; \; \; x=1$
+    \\
+    $f_y=2y \; \; \; y=0$
+    \\
+    $(1,0)$
+    \\
+    E.P.: $(1,0),(2,0),(0,2),(0,-2)$
+    \\
+    $f(1,0)=-1$
+    \\
+    $f(2,0)=0$
+    \\
+    $f(0,2)=4$
+    \\
+    $f(0,-2)=4$
+    \\
+    There is an absolute min at $(1,0)$ and an absolute max at $(0,2)$ and $(0,-2)$
+
+
+
+
+
+
+\item 14.8 \textbf{Lagrange Multipliers}
+\\
+\textit{Optimization:}
+\\
+To optimize $f(x,y,z)$ subject to $g(x,y,z)=k$ 
+\\
+1. Solve $\nabla f = \lambda \nabla g \; \; \; g=k$
+\\
+2. plug solutions into $f(x,y,z)$ and find the biggest/smallest
+
+\\
+\\
+\textit{Example:}
+
+Use Lagrange multipliers to find the extreme values of $f(x,y) = x^2 +2y^2$ on the circle $x^2+y^2 = 1$.  
+    \\
+    \textit{Answer:}
+    \\
+    $f(x,y)=x^2+2y^2 \; \; \; g(x,y)=x^2+y^2=1$
+    \\
+    $\nabla f= \langle 2x, 4y \rangle $
+    \\
+    $\nabla g= \langle 2x, 2y \rangle$
+    \\
+    $\langle 2x, 4y \rangle= \lambda \langle 2x, 2y \rangle$
+    \\
+    $2x= \lambda 2x \rightarrow \lambda=x$
+    \\
+    $4y= \lambda 2y \rightarrow y= lambda/2$
+    \\
+    $x^2+y^2 = 1 \rightarrow \lambda^2+\frac{\lambda}{2}^2=1 \rightarrow \lamda + \frac{\lambda}{2}=1 \rightarrow \frac{3 \lambda}{2}=1 \rightarrow \lambda= \frac{2}{3}$
+    \\
+    $x=\frac{2}{3} \; \; \; y= \frac{4}{3}$ or $(\frac{2}{3}, \frac{4}{3})$
+
+
+\end{enumerate}
+
+
+\end{document}
+

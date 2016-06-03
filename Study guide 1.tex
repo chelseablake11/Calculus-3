@@ -1,0 +1,609 @@
+\documentclass[11pt]{article}
+
+\usepackage{epsfig}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{theorem}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{color}
+\usepackage{pgfplots}
+
+\definecolor{stainlessSteel}{cmyk}{0,0,0.02,0.12}
+%\usepackage{layout}% if you want to see the layout parameters
+                     % and now use \layout command in the body
+
+% This is the stuff for normal spacing
+\makeatletter
+ \setlength{\textwidth}{6.5in}
+ \setlength{\oddsidemargin}{0in}
+ \setlength{\evensidemargin}{0in}
+ \setlength{\topmargin}{0.25in}
+ \setlength{\textheight}{8.25in}
+ \setlength{\headheight}{0pt}
+ \setlength{\headsep}{0pt}
+ \setlength{\marginparwidth}{59pt}
+
+ \setlength{\parindent}{0pt}
+ \setlength{\parskip}{5pt plus 1pt}
+ \setlength{\theorempreskipamount}{5pt plus 1pt}
+ \setlength{\theorempostskipamount}{0pt}
+ \setlength{\abovedisplayskip}{8pt plus 3pt minus 6pt}
+ \setlength{\intextsep}{15pt plus 3pt minus 6pt}
+
+ \renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                   {2ex plus -1ex minus -.2ex}%
+                                   {1.3ex plus .2ex}%
+                                   {\normalfont\Large\bfseries}}%
+ \renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\large\bfseries}}%
+ \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+ \renewcommand\paragraph{\@startsection{paragraph}{4}{0mm}%
+                                    {1ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+ \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {2.0ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\newcounter{thelecture}
+
+\newenvironment{proof}{{\bf Proof:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofof}[1]{{\bf Proof of #1:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofofnobox}[1]{{\bf#1:  }}{}
+\newenvironment{example}{{\bf Example:  }}{\hfill\rule{0mm}{0mm}} % change 2mm 2mm for square
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}[fact]{Lemma}
+\newtheorem{theorem}[fact]{Theorem}
+\newtheorem{definition}[fact]{Definition}
+\newtheorem{corollary}[fact]{Corollary}
+\newtheorem{proposition}[fact]{Proposition}
+\newtheorem{claim}[fact]{Claim}
+\newtheorem{exercise}[fact]{Exercise}
+
+% math notation
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\N}{\ensuremath{\mathbb N}}
+\newcommand{\B}{\ensuremath{\mathbb B}}
+\newcommand{\F}{\ensuremath{\mathcal F}}
+\newcommand{\SymGrp}{\ensuremath{\mathfrak S}}
+\newcommand{\prob}[1]{\ensuremath{\text{{\bf Pr}$\left[#1\right]$}}}
+\newcommand{\expct}[1]{\ensuremath{\text{{\bf E}$\left[#1\right]$}}}
+\newcommand{\size}[1]{\ensuremath{\left|#1\right|}}
+\newcommand{\ceil}[1]{\ensuremath{\left\lceil#1\right\rceil}}
+\newcommand{\floor}[1]{\ensuremath{\left\lfloor#1\right\rfloor}}
+\newcommand{\ang}[1]{\ensuremath{\langle{#1}\rangle}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\polylog}{\operatorname{polylog}}
+
+% anupam's abbreviations
+\newcommand{\e}{\epsilon}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\junk}[1]{}
+\newcommand{\sse}{\subseteq}
+\newcommand{\union}{\cup}
+\newcommand{\meet}{\wedge}
+\newcommand{\dist}[1]{\|{#1}\|_{\text{dist}}}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\embeds}[1]{\;\lhook\joinrel\xrightarrow{#1}\;}
+\newcommand{\mnote}[1]{\normalmarginpar \marginpar{\tiny #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document begins here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hwheadings}[3]{
+{\bf Calculus 200 -  Fall 2015} \hfill {{\bf Exam 1 study guide}}\\
+{{\bf } #2} \hfill {{\bf Due:} #3} \\
+\rule[0.1in]{\textwidth}{0.025in}
+%\thispagestyle{empty}
+}
+\begin{document}
+\hwheadings{4}{10.1-12.5}{Oct 2, 2015}
+
+\begin{enumerate}
+
+\item 10.1 Polar Coordinates $(r,\theta)$
+\\
+$x=r \cos \theta$
+\\
+$y=r\sin \theta$
+\\
+$r=\sqrt{x^2+y^2}$
+\\
+$\theta= tan^{-1} \frac{y}{x}$
+\\
+$0 \le \theta \le \pi$ if $y \ge 0 $ and $\pi \le \theta < 2\pi$ if $y < 0$
+
+
+
+
+\item 10.2 Slopes in Polar Coordinates
+\\
+$\frac{dy}{dx}=\frac{dy}{d\theta} \frac{d\theta}{dx}$
+\\
+$\frac{dy}{d\theta}=f'(\theta)\sin \theta+ f(\theta) \cos \theta$
+\\
+$\frac{dx}{d\theta}=f'(\theta)\cos \theta - f(\theta) \sin \theta$
+\\
+$\frac{dy}{dx}=\frac{=f'(\theta)\sin \theta+ f(\theta) \cos \theta}{f'(\theta)\cos \theta - f(\theta) \sin \theta}$
+\\
+\textbf{Example:} Find the tangent line of $r=\sin 2 \theta$ at $\theta=\frac{\pi}{4}$
+\\
+Answer: $\frac{dy}{dx}=\frac{2 \cos(2\theta)\sin \theta + \sin(2\theta)\cos \theta}{2 \cos(2\theta)\cos\theta-\sin(2\theta)\sin\theta}$
+\\
+$=\frac{2 \cos(2\frac{\pi}{4})\sin \frac{\pi}{4} + \sin(2\frac{\pi}{4})\cos \frac{\pi}{4}}{2 \cos(2\frac{\pi}{4})\cos\frac{\pi}{4}-\sin(2\frac{\pi}{4})\sin\frac{\pi}{4}}$
+\\
+$=-1$
+\\
+Horizontal tangent line: slope numerator equals zero
+\\
+Vertical tangent line: slope denominator equals zero
+\\
+
+
+
+
+\item 10.3 Areas in Polar Coordintes
+\\
+\textbf{Area of sector:} $\frac{\theta}{2\pi} \pi r^2$
+\\
+\textbf{Polar area:} $\sum \limits_{i=1}^n \frac{1}{2\pi} \pi r^2 \Delta \theta$
+\\
+\textbf{Area:} $\frac{1}{2} \int_{\alpha}^{\beta}(f(\theta))^2 d\theta$
+\\
+\textbf{Example:} $r=\sin(2\theta)$
+\\
+Area: $\frac{1}{2} \int_{0}^{\frac{\pi}{2}}(f(\sin(2\theta))^2 d\theta$
+
+
+\item 10.4 Parametric Equations
+\\
+\textbf{Example:} Find the parametric equations describing the given curve:
+ \\
+ Line segment from $(0, 1)$ to $(3,4)$
+    \\
+    Answer: $x=t$
+    \\
+    $Y=t+1$
+    \\
+    where $0 \le t \le 3$
+    \\
+    Line segment from $(3, 1)$ to $(1,3)$
+    \\
+    Answer: $x=3-t$
+    \\
+    $y=t+1$
+    \\
+    where $0 \le t \le 2$
+  \\
+    Portion of the parabola $y=x^2+1$ from $(1, 2)$ to $(2,5)$
+    \\
+    Answer: $x=t$
+    \\
+    $y=t^2+1$
+    \\
+    where $1 \le t \le 2$ 
+   \\ 
+    Circle of radius 3 centered at $(2, 1)$, counterclockwise
+\\
+Answer: $x=3 \cos t +2$
+\\
+$y=3 \sin t +1$
+\\
+Where $0 \le t \le 2 \pi$
+\\
+
+\item 10.5 Calculus with Parametric Equations
+\\
+Slope: $\frac{dy}{dx}=\frac{y'}{x'}$
+\\
+\textbf{Example:} Identify all points at which the curve $x=\cos 2t$ and $y=\sin 4t$ has a horizontal and vertical tangent.  
+\\
+Answer: $\frac{\frac{dy}{dt}}{\frac{dx}{dt}}$
+\\
+$y'=4 \cos (4t)$
+\\
+$x'=-2\sin (2t)$
+\\
+horizontal: $\frac{4 \cos (4t)}{-2 \sin (2t)}=0$
+\\
+$\cos (4t) =0$
+\\
+$t= \{ \frac{\pi}{8}, \frac{3\pi}{8}, \frac{5 \pi}{8}, \frac{7 \pi}{8} \}$
+\\
+$(x,y)=(\frac{\sqrt{2}}{2},1),(\frac{-\sqrt{2}}{2}, 1),(\frac{\sqrt{2}}{2},1), (\frac{-\sqrt{2}}{2}, 1)  $
+
+\\
+Vertical: find were graph is undefined, i.e. where the denominator equals 0
+\\
+$-2 \sin (2t)=0$
+\\
+$t= \{\frac{\pi}{2}, \pi \}$
+\\
+$(x,y)=(-1,1),(1,0)$
+\\
+\textbf{Area:} $\int_{\alpha}^{\beta} y(t) x'(t) dt$
+\\
+\textbf{Example:}  Find the area enclosed by the curve $x=t^3 - 4t$ and $y=t^2-3$ where $-2 \le t \le 2$.
+\\
+Answer: $- \int_{\alpha}^{\beta} y(t) x'(t) dt$
+\\
+$- \int_{-2}^{2} (t^2-3)(3t^2-4) dt$
+\\
+$- \int_{-2}^{2} 3t^4-13t^2+12 dt$
+\\
+$[\frac{-3}{5}t^5+\frac{13}{3}t^3-12t]_{-2}^{2}$
+\\
+$= -\frac{256}{15}=-17.1$
+\\
+\textbf{Arc Length:} $\int_u^v \sqrt{(x'(t))^2+(y'(t))^2}dt$
+\\
+\textbf{example:}  Find the arc length of the curve $x=t \cos t$ and $y = t \sin t$ for $-1 \le t \le 1$.  
+\\
+Answer: $\int_{-1}^{1} \sqrt{(-t\sin(t)+\cos(t))^2+(t\cos (t) + sin (t)^2}$
+\\
+$\sqrt{2}+\sin^-1(1)=2.29$
+
+\item 12.1 The Coordinate system $(x,y,z)$
+\\
+\textbf{Distance Formula:} $\sqrt{(x_1-x_2)^2+(y_1-y_2)^2+(z_1-z_2)^2}$
+\\
+\textbf{Example:} Find the lengths of the sides of the triangle with vertices $(1, 0, 1), (2, 2, -1)$, and $(-3, 2, -2)$.
+\\
+Answer:
+$\sqrt{(1-2)^2+(0-2)^2+(1-(-1))^2}=3$
+\\
+$\sqrt{(1-(-3))^2+(0-2)^2+(1-(-2))^2}=5.39$
+\\
+$\sqrt{(2-(-3))^2+(2-2)^2+(1-2)^2}=5.099$
+\\
+\textbf{Example:} Find an equation of the sphere with center at $(1, 1, 1)$ and radius $2$. 
+\\
+Answer: $(x-1)^2+(y-1)^2+(z-1)^2
+
+\item 12.2 Vectors
+\\
+Vectors consists of a magnitude and a direction.
+\\
+Position vector has initial point at origin
+\\
+\textbf{Magnitude-Norm(length):}$||a||=\sqrt{a_1^2+a_2^2$
+\\
+\textbf{two points:} $(x,y)$ and $(a,b)$ will have a vector of $\langle x-a, y-b \rangle$
+\\
+\textbf{Theorem:} If $x$ is a vector in $\mathbb{R}^2, x=\langle x_1, x_2 \rangle$ and $C \in \mathbb{R}^1$ then $||cx||=|c| ||x||$
+\\
+Proof.
+$||cx||=||\langle cx_1, cx_2 \rangle||$
+\\
+$=\sqrt{(cx_1)^2+= (cx_2)^2}=\sqrt{c^2}\sqrt{x_1^2+x_2^2}=|c|||x||$
+\\
+$\langle v_1,v_2,v_3 \rangle= v_1 i +v_2 j+ v_3 k$
+\\
+\textbf{Properties} (a,b,c vectors d,e constants)
+\begin{enumerate}
+\item $a+b=b+a$
+\item $a+(b+c)=(a+b)+c$
+\item $0 \times a = \langle 0,0 \rangle$
+\item $1 \times a=a$
+\item $a+ \langle 0,0 \rangle = a$
+\item $a+(-a)=0$
+\item $(d+e)a=da+ea$
+\item $d(a+b)=da+db$
+
+\end{enumerate}
+
+
+
+\item 12.3 Dot Product
+\\
+\begin{center}
+\textbf{Dot product:} $x \cdot y= x_1y_1 + x_2y_2+...+x_ny_n$
+\end{center}
+\\
+$||x||^2=x \cdot x$
+\\
+$|| x+y||^2=(x+y) \cdot (x+y)$
+\\
+$|| x-y||^2=(x-y) \cdot (x-y)$
+\\
+\textbf{Proof.} $x \cdot y = ||x|| ||y|| \cos \theta$
+\\
+$||x-y||^2=||x||^2||y||^2-2||x|| ||y|| \cos \theta$
+\\
+$||x||^2||y||^2-||x-y||^2= 2||x|| ||y|| \cos \theta$
+\\
+$2||x|| ||y|| \cos \theta=x \cdot x + y \cdot y - (x-y)\cdot (x-y)$
+\\
+$2||x|| ||y|| \cos \theta=x \cdot x + y \cdot y - (x \cdot x)$
+
+\\
+\textbf{Example:} Verify that $4(x \cdot y) = || x+y||^2 - ||x-y||^2$.
+ \\
+ Answer: We know that:
+ \\
+ $|| x+y||^2=(x+y) \cdot (x+y)$
+ \\
+ And:
+ \\
+ $ ||x-y||^2 = (x-y) \cdot (x-y)$
+ \\
+ Therefore
+ \\
+ $|| x+y||^2 - ||x-y||^2= (x+y) \cdot (x+y) -  (x-y) \cdot (x-y)$
+ \\
+ $x \cdot x + 2(x \cdot y) + y \cdot y - (x \cdot x - 2(x \cdot y) + y \cdot y)$
+ \\
+  $|| x+y||^2 - ||x-y||^2= 4(x \cdot y)$
+  \\
+\textbf{Cauchy-Schwartz inequality:}$|x \cdot y| \le ||x|| \cdot ||y||$
+\\
+\textbf{Example:} Use the Cauchy-Schwartz inequality in $n$ dimensions to show that $\sum \limits_{k=1}^n |a_k| \le \sqrt{n} \left(\sum \limits_{k=1}^n a_k^2 \right)^{1/2}$.  Then use this result to prove that if $p_1, p_2, \dots , p_n$ are non-negative numbers that sum to $1$, then $\sum \limits_{k=1}^n p_k^2 \ge \frac{1}{n}$.
+ \\
+ Answer:
+ \\
+ Cauchy-Shwartz inequality: $|x \cdot y| \le ||x|| ||y|| $
+\\
+$||x||= \sqrt{\sum \limits_{k=1}^{n} x_k^2}$
+\\
+$||y||= \sqrt{\sum \limits_{k=1}^{n} y_k^2}$
+\\
+Let $x = \langle 1,1,1,1,1.....,1 \rangle$
+\\
+and $ y= \langle |a_1|,|a_2|,.....,|a_n| \rangle$
+ \\
+ $|x \cdot y|= x \cdot y$
+ \\
+ $= \sum \limits_{k=1}^{n} |a_k| \le \sqrt{n} (\sqrt{\sum \limits_{k=1}^{n} a_k^2})$
+ \\
+ p_i=|a_i|
+ \\
+ $\sum \limits_{i=1}^{n} |p_i| \le \sqrt{n} (\sqrt{\sum \limits_{i=1}^{n} p_i^2})$
+ \\
+ $\frac{1}{n} \le \sum \limits_{i=1}^{n} p_i^2}$
+\\
+ \textbf{Triangle Inequality} $||x+y|| \le ||x|| + ||y||$ 
+ \\
+ \textbf{Proof.}
+ $||x+y||^2=(x+y) \cdot (x+y)$
+ \\
+  $||x+y||^2= x \cdot x + x \cdot y + y \cdot x + y \cdot y$
+  \\
+   $||x+y||^2= x \cdot x + 2(x \cdot y)+ y \cdot y$
+   \\
+    $||x+y||^2= ||x||^2 + 2(x \cdot y) + ||y||^2$
+    \\
+    $||x+y||^2 \le ||x||^2 + |2(x \cdot y)| + ||y||^2$
+    \\
+    $||x+y||^2 \le ||x||^2 + 2 ||x|| \cdot ||y|| + ||y||^2$
+ \\
+ $||x||^2 + 2 ||x|| \cdot ||y|| + ||y||^2 = (||x||+||y||)^2$
+ \\
+ $||x+y||^2 \le (||x||+||y||)^2$
+ \\
+  $||x+y|| \le (||x||+||y||)$
+  
+\textbf{Example:} Find the angle between the vectors $\langle 2,1,-3 \rangle$ and $ \langle 1,5,6 \rangle$.
+ \\
+ Answer:
+ \\
+ $x \cdot y = ||x|| \times ||y|| \times \cos \theta$
+ \\
+ $\langle 2,1,-3 \rangle \cdot \langle 1,5,6 \rangle = \sqrt{2^2+1^2+3^2} \times \sqrt{1^2+5^2+6^2} \times \cos \theta $
+ \\
+ $2+5-18= \sqrt{14} \times \sqrt{62} \times \cos \theta $
+ \\
+ $-11=\sqrt{868} \cos \theta$
+ \\
+ $\frac{-11}{\sqrt{868}}= \cos \theta $
+ \\
+ $\theta= \cos^{-1}\frac{-11}{\sqrt{868}} $
+ \\
+ $\theta= 1.9$ rad or $\theta = 111.9^{o} $
+ \\
+ \textbf{Projection a onto b:}  $\frac{a \cdot b}{|b|^2} \times b $
+ \\
+ \textbf{Example:}  Find the projection of ${\bf a} = \langle 2,3 \rangle$ onto ${\bf b} = \langle -1,5 \rangle$.
+ \\
+ Answer:
+ \\
+ $\frac{a \cdot b}{|b|^2} \times b $
+ \\
+ $\frac{(2)(-1)+(3)(5)}{(-1)^2+(5)^2} \times (-1,5) $
+ \\
+ $\frac{1}{2} \times (-1,5) $
+ \\
+ $(\frac{-1}{2}, \frac{5}{2}) $
+ \\
+ \textbf{Facts:}
+ \begin{enumerate}
+ \item $||x|| \ge 0$ and $||x||=0$ iff $x= \langle 0,0 \rangle$
+ \item $||\alpha x||=|\alpha| \; ||x||$
+ \item $x \cdot y = y \cdot x$
+ \item $(x+y) \cdot (x+y)= x \cdot x + x  \cdot y + y \cdot x + y \cdot y$
+ 
+ \end{enumerate}
+
+
+\tectbf{Proof.} $||r(t)||= c \in \mathbb{R}$,   then $r(t)$ and $r'(t)$ are orthogonal $\forall t$
+\\
+Show that $r \cdot r' =0$
+\\
+$||r(t)||=\sqrt{r(t) \cdot r(t)}=c$
+\\
+$||r(t)||^2=r(t) \cdot r(t) = c^2$
+\\
+$(r(t) \cdot r(t) = c^2)' $
+\\
+$r(t) \cdot r'(t) + r'(t) \cdot r(t) = 0$
+\\
+$2(r(t) \cdot r'(t))=0$
+\\
+$r(t) \cdot r'(t)=0$
+
+
+
+\item 12.4 Cross Product
+
+\begin{center}
+\textbf{Cross Product:} $x= \langle a,b,c \rangle$
+\\
+$y= \langle d,e,f \rangle$
+\\
+$x \times y = \langle bf-ce,cd-af,ae-bd \rangle$
+
+\end{center}
+
+\textbf{Proof.} Any vectors ${\bf a}$ and ${\bf b}$ in $\R^3$, ${\bf a} \times {\bf b}$ is orthogonal to both ${\bf a}$ and ${\bf b}$.
+ \\
+ Let $a=\langle a_1,a_2,a_3 \rangle$ and $b= \langle b_1, b_2, b_3 \rangle$
+ \\
+ $a \cdot (a \times b)=$
+ \\
+ $ a \cdot \langle a_2 b_3 - a_3 b_2, a_3 b_1 - a_1 b_3, a_1 b_2 - a_2 b_1 \rangle$
+ \\
+ $a_1(a_2 b_3 - a_3 b_2) + a_2 (a_3 b_1 - a_1 b_3) + a_3 (a_1 b_2 - a_2 b_1)$
+
+ \\
+$a_1 a_2 b_3 - a_1 a_3 b_2 + a_2 a_3 b_1 - a_1 a_2 b_3 + a_1 a_3 b_2 - a_2 a_3 b_1= 0$
+\\
+The same can be seen for  $b \cdot (a \times b)=$
+\\
+$ b \cdot \langle a_2 b_3 - a_3 b_2, a_3 b_1 - a_1 b_3, a_1 b_2 - a_2 b_1 \rangle$
+\\
+ $b_1(a_2 b_3 - a_3 b_2) + b_2 (a_3 b_1 - a_1 b_3) + b_3 (a_1 b_2 - a_2 b_1)$
+ \\
+ $b_1 a_2 b_3 - b_1 a_3 b_2 + b_2 a_3 b_1 - a_1 b_2 b_3 + a_1 b_3 b_2 - a_2 b_3 b_1= 0$
+ \\
+ By definition, if the dot product is equal to zero, the vectors are orthogonal.
+\\
+\textbf{Proof.} For nonzero vectors ${\bf a}$ and ${\bf b}$ in $\R^3$, if $0 \le \theta \le \pi$ is the angle between ${\bf a}$ and ${\bf b}$, then $|| {\bf a} \times {\bf b}|| = || {\bf a}|| \; || {\bf b}|| \; \sin \theta$.
+ \\
+ We know that $|| a \times b||^2= ||a||^2 ||b||^2 - (a \cdot b)^2$
+ \\
+ we also know that $(a \cdot b) = ||a|| ||b|| \cos \theta $
+ \\
+ $|| a \times b||^2= ||a||^2 ||b||^2 - (||a|| ||b|| \cos \theta)^2$
+ \\
+ $=||a||^2 ||b||^2 - ||a||^2 ||b||^2 \cos^2 \theta $
+ \\
+ $=||a||^2 ||b||^2 - (1 - \cos^2 \theta) $
+ \\
+ $|| a \times b||^2=||a||^2 ||b||^2 - \sin^2 \theta $
+ \\
+ $|| a \times b||=||a|| ||b|| - \sin \theta $
+\\
+\textbf{Facts:} (u,v,w are vectors and a is a constant)
+\begin{enumerate} 
+\item $u \times (v+w)= u \times v + u \times w$
+\item $(v+w) \times u= v \times u + w \times u$
+\item $(au) \times v = a(u \times v)= u \times (av)$
+\item $u \cdot (v \times w)= (u \times v) \cdot w$
+\item $u \times (v \times w)= (u \cdot w)v- (u \cdot v)w $
+
+
+\end{enumerate}
+
+
+\item 12.5 Lines and Planes
+\\
+\textbf{Line:} point and direction $p=(x_o,y_o,z_o)$ Vector $v= \langle a,b,c \rangle$
+\\
+Can describe a line using a vector equation or parametric equations.
+\\
+\begin{center}
+\textbf{Vector Equation} 
+\\
+$r=r_o+tv$ 
+\\
+Where $r= \langle x,y,z \rangle$, $r_o=x_o,y_o,z_o$, $v= \langle a,b,c \rangle$ or $\langle x-x_o, y-y_o, z-z_o \rangle$, and t is a parameter.
+\\
+\textbf{Parametric equations}
+\\
+$x=x_o+ta$
+\\
+$y=y_o+tb$
+\\
+$z=z_o+tc$
+\\
+Where $p=(x_o,y_o,z_o)$ and $v= \langle a,b,c \rangle$
+
+\end{center}
+
+\textbf{Symmetric equations} $\frac{x-x_o}{a}=\frac{y-y_o}{b}=\frac{z-z_o}{c}$ when $a,b,c \ne 0$
+\\
+\textbf{Skew lines:} non parallel, non interesective
+\\
+Lines are not parallel if one line  is not a multiple of the other.
+\\
+Lines are not intersective if you cannot find constant for your variables that satisfies all equations
+\\
+\textbf{example:} Show that $\langle 1,-1,3 \rangle + t_1\langle 2, 3, -1 \rangle$ and $\langle 0,2,1 \rangle + t_2 \langle 1,0,3 \rangle$ do not intersect.
+\\
+Answer: 
+\\
+$1+2t_1=t_2$ , $-1+3t_1=2$ , $3-t_1=1+3t_2$
+\\
+$-1+3t_1=2 \rightarrow 3t_1=3 \rightarrow t_1=1 $
+\\
+$1+2t_1=t_2 \rightarrow 1+2(1)=t_2 \rightarrow t_2=3$
+\\
+$3-t_1=1+3t_2 \rightarrow 3-1=1+3(3) \rightarrow 2 \ne 10$ Not intersected.
+\\
+\textbf{Planes} Point and normal vector (orthogonal vector)
+\\
+orthogonal vectors means perpendicular vectors, which means the dot product is equal to zero
+\\
+\begin{center}
+$a(x-x_o)+b(y-y_o)+c(z-z_o)=0$
+\\
+$\langle x_o,y_o,z_o\rangle \cdot \langle a,b,c \rangle =0$
+\\
+
+
+\end{center}
+\\
+Normal vector $n=a \times b$ for two vectors a and b
+\\
+if given 3 points, find the vectors of each point $p=(1,2,3) d=(2,3,4) e=(3,4,5) V_1= \langle 2-1, 3-2,4-3 \rangle v_2= \langle 3-2, 4-3, 5-4 \rangle$ Then take the cross product $v_1 \times v_2$ to get the normal vector.
+\\
+\textbf{Example:} Where does the line $x=2+3t \; y=-4t \; z=5+t$ intersect the plane $4x+5y-2z=18$
+\\
+Answer: $4(2+3t)+5(-4t)-2(5+t)=18$
+\\
+$8+12t-20t-10-2t=18$
+\\
+$-10t=20$
+\\
+$t=-2$
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+
+\end{document}

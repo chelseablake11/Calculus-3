@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+
+\usepackage{epsfig}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{theorem}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{color}
+\usepackage{pgfplots}
+
+\definecolor{stainlessSteel}{cmyk}{0,0,0.02,0.12}
+%\usepackage{layout}% if you want to see the layout parameters
+                     % and now use \layout command in the body
+
+% This is the stuff for normal spacing
+\makeatletter
+ \setlength{\textwidth}{6.5in}
+ \setlength{\oddsidemargin}{0in}
+ \setlength{\evensidemargin}{0in}
+ \setlength{\topmargin}{0.25in}
+ \setlength{\textheight}{8.25in}
+ \setlength{\headheight}{0pt}
+ \setlength{\headsep}{0pt}
+ \setlength{\marginparwidth}{59pt}
+
+ \setlength{\parindent}{0pt}
+ \setlength{\parskip}{5pt plus 1pt}
+ \setlength{\theorempreskipamount}{5pt plus 1pt}
+ \setlength{\theorempostskipamount}{0pt}
+ \setlength{\abovedisplayskip}{8pt plus 3pt minus 6pt}
+ \setlength{\intextsep}{15pt plus 3pt minus 6pt}
+
+ \renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                   {2ex plus -1ex minus -.2ex}%
+                                   {1.3ex plus .2ex}%
+                                   {\normalfont\Large\bfseries}}%
+ \renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\large\bfseries}}%
+ \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+ \renewcommand\paragraph{\@startsection{paragraph}{4}{0mm}%
+                                    {1ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+ \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {2.0ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\newcounter{thelecture}
+
+\newenvironment{proof}{{\bf Proof:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofof}[1]{{\bf Proof of #1:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofofnobox}[1]{{\bf#1:  }}{}
+\newenvironment{example}{{\bf Example:  }}{\hfill\rule{0mm}{0mm}} % change 2mm 2mm for square
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}[fact]{Lemma}
+\newtheorem{theorem}[fact]{Theorem}
+\newtheorem{definition}[fact]{Definition}
+\newtheorem{corollary}[fact]{Corollary}
+\newtheorem{proposition}[fact]{Proposition}
+\newtheorem{claim}[fact]{Claim}
+\newtheorem{exercise}[fact]{Exercise}
+
+% math notation
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\N}{\ensuremath{\mathbb N}}
+\newcommand{\B}{\ensuremath{\mathbb B}}
+\newcommand{\F}{\ensuremath{\mathcal F}}
+\newcommand{\SymGrp}{\ensuremath{\mathfrak S}}
+\newcommand{\prob}[1]{\ensuremath{\text{{\bf Pr}$\left[#1\right]$}}}
+\newcommand{\expct}[1]{\ensuremath{\text{{\bf E}$\left[#1\right]$}}}
+\newcommand{\size}[1]{\ensuremath{\left|#1\right|}}
+\newcommand{\ceil}[1]{\ensuremath{\left\lceil#1\right\rceil}}
+\newcommand{\floor}[1]{\ensuremath{\left\lfloor#1\right\rfloor}}
+\newcommand{\ang}[1]{\ensuremath{\langle{#1}\rangle}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\polylog}{\operatorname{polylog}}
+
+% anupam's abbreviations
+\newcommand{\e}{\epsilon}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\junk}[1]{}
+\newcommand{\sse}{\subseteq}
+\newcommand{\union}{\cup}
+\newcommand{\meet}{\wedge}
+\newcommand{\dist}[1]{\|{#1}\|_{\text{dist}}}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\embeds}[1]{\;\lhook\joinrel\xrightarrow{#1}\;}
+\newcommand{\mnote}[1]{\normalmarginpar \marginpar{\tiny #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document begins here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hwheadings}[3]{
+{\bf Calculus 200 -  Fall 2015} \hfill {{\bf Problem Set #1}}\\
+{{\bf } #2} \hfill {{\bf Due:} #3} \\
+\rule[0.1in]{\textwidth}{0.025in}
+%\thispagestyle{empty}
+}
+
+\begin{document}
+
+\hwheadings{5}{NAME }{Oct 14, 2015}
+
+
+\begin{enumerate}
+
+
+    
+    
+    
+    \item A projectile is fired with angle of elevation $\alpha$ and initial velocity ${\bf v}_0$.  Derive the parametric equations of the trajectory and use to determine the value of $\alpha$ maximizes the range of the projectile?  
+    \\
+    \textbf{Answer:}
+    \\
+    $v(t)= \int a(t)= \int \langle 0, -9.8 \rangle $
+    \\
+    $v(t)=\langle c_1, -9.8t+c_2 \rangle$
+    \\
+    $v(t)=\langle v_oo \cos \alpha, -9.8 t + v_0 \sin \alpha \rangle$
+    \\
+    $r(t)=\langle v_0 + \cos \alpha, \frac{-9.8}{2}t^2+v_0t \sin \alpha \rangle$
+    \\
+    $x=v_0 t \cos \alpha$
+    \\
+    $y=-\frac{9.8}{2}t^2+v_0+\sin \alpha$
+    \\
+    \\
+    $x=v_0 \frac{v_0 \sin \alpha}{4.9}\cos \alpha$
+    \\
+    $x=\frac{v_0^2}{4.9} \sin \alpha \cos \alpha$
+    \\
+    $\frac{dx}{d \alpha} \frac{v_0^2}{4.9} \sin \alpha \cos \alpha =0$
+    \\
+    $\cos (2 \alpha)=0 $
+    \\
+    $2 \alpha= \frac{\pi}{2}$
+    \\
+    $\alpha=\frac{\pi}{4}$
+    
+    
+    \item Derive the position vector ${\bf r}(t)$ for a projectile fired from height $h$.  
+    \\
+    \textbf{Answer:}
+    \\
+    $r_0=\langle 0,h \rangle$
+    \\
+    $r(t)=\langle v_0 t \cos \alpha, \frac{9.8}{2}t^2+v_0 t \sin \alpha + h$
+    \\
+    $x=v_0 t \cos \alpha$
+    \\
+    $y=v_0t \sin \alpha +h$
+    
+    
+    \item A projectile is fired at 150 m/s and angle of elevation $45^\circ$ from am position 10 meters above ground level,  where does the projectile hit the ground and with what speed?
+    \\
+    \textbf{Answer:}
+    \\
+    $x=150t \cos (45)=150t \frac{\sqrt{2}}{2}=\frac{150\sqrt{2}}{2}t$
+    \\
+    $y=150t \cos(45)+10=150t \frac{\sqrt{2}}{2}+10= \frac{150\sqrt{2}}{2}t+10$
+    \\
+    $r(t)= \langle \frac{150\sqrt{2}}{2}t, \frac{150\sqrt{2}}{2}t+10 \rangle $
+    \\
+    $\frac{150\sqrt{2}}{2}t+10=0$
+    \\
+    $\frac{150\sqrt{2}}{2}t=-10$
+    \\
+    $\frac{150\sqrt{2}}{2} \times \frac{-20}{150\sqrt{2}}=-10$
+    \\
+    $t=\frac{-20}{150 \sqrt{2}}$
+    
+    
+    
+    \item The position vector of an object moving in a plane is given by ${\bf r}(t) = t^3 {\bf i} + t^2 {\bf j}$.  Find its velocity, speed, and acceleration when $t=1$. 
+    \\
+    \textbf{Answer:}
+    \\
+    $r(t)=\langle t^3, t^2 \rangle$
+    \\
+    $v(t)=r'(t)=\langle 3t^2, 2t \rangle$
+    \\
+    $a(t)=v'(t)=\langle 6t, 2 \rangle $
+    \\
+    $a(1)= \langle 6,2 \rangle$
+    \\
+    Speed$=||v||=\sqrt{(3t^2)^2+(2t)^2}=\sqrt{9t^4+4t}$
+    \\
+    If $t=1$ a the point of speed also, we will see that speed$=\sqrt{9(1)^4+4(1)}=\sqrt{13}$
+    
+    
+    
+    \item Find the unit tangent and principal unit normal vectors to the curve defined by ${\bf r}(t) = \langle t^2, t \rangle$.  
+    \\
+    \textbf{Answer:}
+    \\
+    $T(t)=  \langle \frac{2t}{4t^2+1}, \frac{1}{\sqrt{4t^2+1}} \rangle$
+    \\
+    $N(t)= \langle 2 (4t^2+1)^{-\frac{3}{2}}, 4t (4t^2+1)^{-\frac{3}{2}} \rangle$
+    
+   %  \item Find the binormal vector for the curve traced out by ${\bf r}(t) = \langle \sin(2t), \cos(2t)
+    
+    \item Find the unit normal and binormal vector for the circular helix $$ {\bf r}(t) = \cos t {\bf i} + \sin t {\bf j} + y {\bf k}$$
+    \\
+    \textbf{Answer:}
+    \\
+    $N(t)= \langle - \cos t,-\sin t,0 \rangle$
+    \\
+    $B(t)=\langle \frac{\cos t}{\sqrt{2}}, - \frac{\sin t}{\sqrt{2}}, \sqrt{2} \cos t \sin t \rangle$
+    
+ 
+ \item Prove $$ \kappa(t) = \frac{|| {\bf r}'(t)  \times {\bf r}''(t)||}{||{\bf r}'(t)||^3}$$
+    \\
+    \textbf{Answer:}
+    We know that $\kappa(t)=\frac{|T'|}{|r'|}$ and $T=\frac{r'(t)}{|r'(t)|}$ We want to show that  $ \kappa(t) = \frac{|| {\bf r}'(t)  \times {\bf r}''(t)||}{||{\bf r}'(t)||^3}$
+    \\
+    We find that $r'=|r'|T=vT$ where $v$ is the scalar speed. 
+    \\
+    We also find that $r''=aT+vT'$
+   \\
+   Next we find $r' \times r''$
+   \\
+   $r' \times r''= vt \times (aT+vT')=(vT \times aT)+(vT \times vT')=(vT \times aT)+v(T \times vT')=(vT \times aT)+v^2(T \times T')=v(T \times aT)++v^2(T \times T')=va(T \times T)+v^2(T \times T')=v^2(T \times T')$
+   \\
+   We know that $|T|=1$, $T \cdot T' =0$, and $\theta=\frac{\pi}{2}$
+   \\
+   $|r' \times r''|= |v^2(T \times T')|=|v^2| |T \times T'| = v^2 |T| \; |T'|= v^2 \; |T'| $
+   \\
+   $\frac{|r' \times r''|}{|r'|^2}=|T'|$
+   \\
+   If we divide both sides by $|r'|$ we get
+   \\
+   $\frac{|r' \times r''|}{|r'|^3}=\frac{|T'|}{|r'|}$
+   \\
+   We know that $\frac{|T'|}{|r'|}=\kappa(t)$ so therefore $\frac{|r' \times r''|}{|r'|^3}=\kappa(t)$
+   
+   
+   \item Find the domain of (a) $f(x,y) = x \ln y$ and (b) $g(x,y) = \frac{2x}{y-x^2}$.
+   \\
+   \textbf{Answer:}
+   \\
+   \textbf{A.} $D(f)=\{(x,y):y > 0 \}$
+   \\
+   \textbf{B.} $D(g)=\{(x,y):y \ne x^2 \}$
+   
+   
+   \item Sketch contour plots for (a) $f(x,y) = -x^2+y$ and (b) $g(x,y) = x^2+y^2$.
+   \\
+   \textbf{Answer:}
+   \\
+   \textbf{a.}
+   This graph is a bunch of parabola's (consentric parabola's).
+   \\
+   
+   \textbf{b.}
+   This graph is a set of consentric circles where the circles get closer if you take the same amount of hieght steps as you go up the graph.
+   
+   
+   
+   \item Find the limit of 
+   \[
+       \lim_{(x,y) \to (2,1)} \frac{2x^2y +  3xy}{5xy^2 + 3y}
+   \]
+   
+   \textbf{Answer:}
+   \\
+   $\lim_{(x,y) \to (2,1)} \frac{2(2)^2 +  3(2)}{5(2) + 3}= \frac{14}{13}$
+   
+   
+   
+    
+
+\end{enumerate}
+\end{document}
+
+

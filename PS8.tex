@@ -1,0 +1,375 @@
+\documentclass[11pt]{article}
+
+\usepackage{epsfig}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amscd}
+\usepackage{amsmath,esint}
+\usepackage{xspace}
+\usepackage{theorem}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{color}
+\usepackage{pgfplots}
+
+\definecolor{stainlessSteel}{cmyk}{0,0,0.02,0.12}
+%\usepackage{layout}% if you want to see the layout parameters
+                     % and now use \layout command in the body
+
+% This is the stuff for normal spacing
+\makeatletter
+ \setlength{\textwidth}{6.5in}
+ \setlength{\oddsidemargin}{0in}
+ \setlength{\evensidemargin}{0in}
+ \setlength{\topmargin}{0.25in}
+ \setlength{\textheight}{8.25in}
+ \setlength{\headheight}{0pt}
+ \setlength{\headsep}{0pt}
+ \setlength{\marginparwidth}{59pt}
+
+ \setlength{\parindent}{0pt}
+ \setlength{\parskip}{5pt plus 1pt}
+ \setlength{\theorempreskipamount}{5pt plus 1pt}
+ \setlength{\theorempostskipamount}{0pt}
+ \setlength{\abovedisplayskip}{8pt plus 3pt minus 6pt}
+ \setlength{\intextsep}{15pt plus 3pt minus 6pt}
+
+ \renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                   {2ex plus -1ex minus -.2ex}%
+                                   {1.3ex plus .2ex}%
+                                   {\normalfont\Large\bfseries}}%
+ \renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\large\bfseries}}%
+ \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+ \renewcommand\paragraph{\@startsection{paragraph}{4}{0mm}%
+                                    {1ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+ \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {2.0ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\newcounter{thelecture}
+
+\newenvironment{proof}{{\bf Proof:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofof}[1]{{\bf Proof of #1:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofofnobox}[1]{{\bf#1:  }}{}
+\newenvironment{example}{{\bf Example:  }}{\hfill\rule{0mm}{0mm}} % change 2mm 2mm for square
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}[fact]{Lemma}
+\newtheorem{theorem}[fact]{Theorem}
+\newtheorem{definition}[fact]{Definition}
+\newtheorem{corollary}[fact]{Corollary}
+\newtheorem{proposition}[fact]{Proposition}
+\newtheorem{claim}[fact]{Claim}
+\newtheorem{exercise}[fact]{Exercise}
+
+% math notation
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\N}{\ensuremath{\mathbb N}}
+\newcommand{\B}{\ensuremath{\mathbb B}}
+\newcommand{\F}{\ensuremath{\mathcal F}}
+\newcommand{\SymGrp}{\ensuremath{\mathfrak S}}
+\newcommand{\prob}[1]{\ensuremath{\text{{\bf Pr}$\left[#1\right]$}}}
+\newcommand{\expct}[1]{\ensuremath{\text{{\bf E}$\left[#1\right]$}}}
+\newcommand{\size}[1]{\ensuremath{\left|#1\right|}}
+\newcommand{\ceil}[1]{\ensuremath{\left\lceil#1\right\rceil}}
+\newcommand{\floor}[1]{\ensuremath{\left\lfloor#1\right\rfloor}}
+\newcommand{\ang}[1]{\ensuremath{\langle{#1}\rangle}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\polylog}{\operatorname{polylog}}
+
+% anupam's abbreviations
+\newcommand{\e}{\epsilon}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\junk}[1]{}
+\newcommand{\sse}{\subseteq}
+\newcommand{\union}{\cup}
+\newcommand{\meet}{\wedge}
+\newcommand{\dist}[1]{\|{#1}\|_{\text{dist}}}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\embeds}[1]{\;\lhook\joinrel\xrightarrow{#1}\;}
+\newcommand{\mnote}[1]{\normalmarginpar \marginpar{\tiny #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document begins here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hwheadings}[3]{
+{\bf Calculus 200 -  Fall 2015} \hfill {{\bf Problem Set #1}}\\
+{{\bf } #2} \hfill {{\bf Due:} #3} \\
+\rule[0.1in]{\textwidth}{0.025in}
+%\thispagestyle{empty}
+}
+
+\begin{document}
+
+\hwheadings{8}{Chelsea Blake}{Dec. 9, 2015}
+
+
+\begin{enumerate}
+
+
+    
+    
+    
+    \item Define $\mathcal{R} = [a,b] \times [c,d]$ denote the rectangle in the plane consisting of all points $(x,y)$ such that $a \le x \le b$ and $c \le y \le d$.  As before, subdivide $[a,b]$ and $[c,d]$ by choosing partitions:
+    \[ a = x_0 < x_1 < \cdots < x_m = b \;\;\; \text{    and   } \;\;\;  c = y_0 < x_1 < \cdots < y_n = d,  \]
+    where $m, n \in \mathbb{N}$.  Next (again as always), create a $m \times n$ grid of subrectangles $\mathcal{R}_{ij}$, then choose sample points $p_{ij}$ in each $\mathcal{R}_{ij}$.  Note that $\mathcal{R}_{ij} = [x_{i-1}, x_i] \times [y_{j-1},y_j]$, so $\mathcal{R}_{ij}$ has area 
+    \[ \Delta A_{ij} = \Delta x_i  \;  \Delta y_j \] 
+    where $\Delta x_i = x_i - x_{i-1}$ and $\Delta y_j = y_j - y_{j-1}$.  We then can define the Riemann sum 
+    \[ S_{m,n} =  \sum_{i=1}^n \sum_{j=1}^n f(p_{ij}) \Delta A_{ij} = \sum_{i=1}^n \sum_{j=1}^n f(p_{ij}) \Delta x_{i} \Delta y_{j}.  \] 
+    \\
+    $\mathcal{R}=[1,2.5] \times [1,2]$
+    
+    Calculate the $ S_{3,2}$ approximation of 
+    \[  \iint_{\mathcal{R}} xy \; dA  \]
+    \\
+    \textbf{Solution:} \\
+     \[ S_{3,2} =  \sum_{i=1}^{2.5} \sum_{j=1}^2 f(p_{ij}) \Delta A_{ij}  \] 
+     \\
+     $m=3 \; n=2 \; \Delta x= \frac{1}{2} \; \Delta y= \frac{1}{2}$ \\
+     Pick a point in each subbox $(1,1),(1,1.5),(1.5,1),(1.5,1.5),(2,1),(2,1.5)$ \\
+     Plug in $f(x) \rightaarow 1,1.5,1.5,2.25,2,3$
+     \\
+     $\frac{1}{4}(1+1.5+1.5+2.25+2+3)= \frac{11}{8}$
+    
+    
+    
+   % $$\int_{1}^{2} \int_{1}^{2.5} xy \; dx \, dy $$
+    %\\
+    %$$\int_{1}^{2}  \frac{1}{2}x^2y |_{1}^{2} \;  dy $$
+    %\\
+    
+    %$$\int_{1}^{2}  2y- \frac{1}{2}y  \;  dy $$
+    %\\
+    %$$y^2- \frac{1}{4}y^2 |_{1}^{2}  $$
+    %\\
+    %$$4-1-1+\frac{1}{4}$$
+    %\\
+    %$$ 2 \frac{1}{4}$$
+    
+    
+    
+    
+    
+    
+    
+    
+    \item Evaluate $\int_2^4 \int_1^9 ye^x \; dy \; dx$.
+    \\
+    \textbf{Solution:}
+    \\
+    $$\int_2^4 \int_1^9 ye^x \; dy \; dx$$
+    \\
+    $$\int_2^4  \frac{1}{2} y^2 e^x |_{1}^{9} \; dx$$
+    \\
+    $$\int_2^4  \frac{81}{2} e^x - \frac{1}{2} e^x \; dx$$
+    \\
+    $$\frac{81}{2} e^x - \frac{1}{2} e^x |_{2}^{4}$$
+    \\
+    $$(\frac{81}{2} e^4 - \frac{1}{2} e^4)-(\frac{81}{2} e^2 - \frac{1}{2} e^2 )$$
+    
+    
+    \item Evaluate $\int_0^4 \int_0^3 \frac{1}{\sqrt{3x+4y}} \; dy \; dx$.
+    \\
+    \textbf{Solution:}
+    \\
+    $$\int_0^4 \int_0^3 \frac{1}{\sqrt{3x+4y}} \; dy \; dx$$
+    \\
+    $u=3x+4y \; du=4 \, dy $
+    \\
+    $$\frac{1}{4} \int_{0}^{3} u^{-\frac{1}{2}} \; du$$
+    \\
+    $$\frac{1}{4} [ \frac{3}{2} u^{-\frac{3}{2}} ]_{0}^{3} $$
+    \\
+    $$\frac{1}{4} [ \frac{3}{2} (3x+4y)^{-\frac{3}{2}} ]_{0}^{3} $$
+    \\
+    $$\frac{1}{4}  (\frac{3}{2} (3x+12)^{-\frac{3}{2}} - \frac{3}{2} (3x)^{-\frac{3}{2}}) $$
+    \\
+    $$\int_0^4 \frac{1}{4}  (\frac{3}{2} (3x+12)^{-\frac{3}{2}} - \frac{3}{2} (3x)^{-\frac{3}{2}}) \; dx$$
+    \\
+    Answer from sage: $\frac{16}{3} \sqrt{6} - \frac{16}{3} \sqrt{3}$
+
+
+
+\item Find the volume between the graph of $f(x,y) = 16-x^2 - 3y^2$ and the rectangle $\mathcal{R} = [0,3] \times [0,1]$.
+\\
+\textbf{Solution:} \\
+
+$$ \int_{0}^{1} \int_{0}^{3} 16-x^2-3y^2 \; dx \, dy $$
+\\
+$$ \int_{0}^{1} 16x-\frac{1}{3}x^3-3xy^2|_{0}^{3} \; dy  $$
+\\
+$$ \int_{0}^{1} 39-9y^2 \; dy  $$
+\\
+$$ 39y-3y^3 |_{0}^{1}  $$
+\\
+$$ 36 $$
+
+
+\item Suppose $\frac{\partial^2 f}{\partial x \partial y} = f(x,y)$.  Derive an extension of the Fundamental Theorem of Calculus for 
+\[ \iint_{\mathcal{R}} f(x,y) \; dy \, dx  \]
+where $\mathcal{R} = [a,b] \times [c,d]$.
+\\
+\textbf{Solution:} \\
+\\
+$\frac{\partial^2 f}{\partial x \partial y} = f(x,y)$
+\\
+$\iint \frac{\partial^2 f}{\partial x \partial y} = \iint f(x,y)$
+\\
+$\int_{a}^{b} \int_{c}{d} f_{xy}(x,y) \; dy \, dx$
+\\
+$\int_{a}^{b} f_x(x,d)-f_x(x,c) \; dx$ \\
+$[f(b,d)-f(b,c)]-[f(a,b)-f(a,c)]$
+
+
+
+
+
+
+\item Evaluate the integral by first converting to polar coordinates
+\[ \int_{-2}^{2}  \int_{-\sqrt{4-x^2}}^{\sqrt{4-x^2}} \sqrt{x^2+y^2} dy \, dx \]
+\\
+\textbf{Soution:} \\
+
+\[ \int_{0}^{\pi}  \int_{0}^{2} r \; dr \, d \theta \]
+\\
+\[ \int_{0}^{\pi}  \frac{1}{2} r^2 |_{0}^{2} \;  d \theta \] \\
+
+\[ \int_{0}^{\pi}  4 \;  d \theta \] \\
+\[   4 \theta |_{0}^{\pi}  \] \\
+\[   4 \pi  \] \\
+
+
+
+    
+    
+    \item Find the volume inside the parabolid $z = 9-x^2-y^2$, outside the cylinder $x^2 + y^2 = 4$ and above the $xy$-plane.
+\\
+\textbf{Solution:}
+
+
+
+    
+    \item Find the surface area of the portion of the surface $z=y^2+4x$ lying above the triangle region $R$ in the $xy$-plane with vertices at $(0,0), (0, 2)$, and $(2,2)$.
+    \\
+    \textbf{Solution:}
+    \\
+    $f_x=4 \; \; f_y=2y$
+    \\
+    $$ \int_{0}^{2} \int_{0}^{y} \sqrt{17+4y^2} \; dx \, dy $$
+    \\
+    $$ \int_{0}^{2} \sqrt{17+4y^2} x |_{0}^{y} \;  dy $$
+    \\
+     $$ \int_{0}^{2} \sqrt{17+4y^2} y \;  dy $$
+     \\
+     $u=17+4y^2$ \\ $du=8y \; dy$
+     \\
+     $$\frac{1}{8} \int_{17}^{33} u^{\frac{1}{2}} \; du $$
+     \\
+     $$\frac{1}{4} u^{\frac{3}{2}} |_{17}^{33}$$
+     \\
+     $$\frac{1}{4} (17+4y^2)^{\frac{3}{2}} |_{17}^{33}$$
+     \\
+     $$\frac{1}{4} (17+4(33)^2)^{\frac{3}{2}}-\frac{1}{4} (17+4(17)^2)^{\frac{3}{2}}$$     
+     
+     
+     
+     
+     
+     
+    
+    \item Evaluate $\iiint_Q 2xe^y \sin(z) \; dV$ where $Q$ is the rectangular box defined by $$Q=\{(x,y,z): 1 \le x \le 2, 0 \le y \le 1, \text{ and } 0 \le z \le \pi \}.$$
+    \\
+    \textbf{Solution:} \\
+    $$\int_{0}^{\pi} \int_{0}^{1} \int_{1}^{2} 2xe^y \sin(z) \; dx \, dy \, dz  $$ \\
+    
+    $$\int_{0}^{\pi} \int_{0}^{1} x^2e^y \sin(z) |_{1}^{2} \; dy \, dz  $$ \\
+    
+    $$\int_{0}^{\pi} \int_{0}^{1} 4e^y \sin(z)- e^y \sin(z) \; dy \, dz  $$ \\
+    
+    $$\int_{0}^{\pi}  4e^y \sin(z)- e^y \sin(z) |_{0}^{1} \; dz  $$ \\
+    $$\int_{0}^{\pi}  4e \sin(z)- e \sin(z) - 4 \sin(z) + \sin{z} \; dz  $$ \\
+    
+     $$  -4e \cos(z) + e \cos(z) + 4 \cos(z)  - \cos{z} |_{0}^{\pi}  $$ \\
+     
+     $$ -4e (-1) + e (-1) + 4 (-1)  - (-1) - (-4e  + e  + 4   - 1) $$ \\
+     \\
+     $$ 6e $$
+    
+    
+    
+    
+    
+    
+    
+    \item Evaluate $\iiint_Q 6xy \; dV$ where $Q$ is the tetrahedron bounded by the planes: $x=0, y=0, z=0$, and $2x+y+z=4$.
+    \\
+    \textbf{Solution:}
+    \\
+    For this problem we will first find the boundaries of the intrigal at z. We know that the lowest boundary for each variable is 1. We will then set z equal equal to 0, and solve for y. That is our upper bound at y. Finally set both z and y equal to zero and solve for x to get the upper bound at x.
+    \\
+    $$\int_o^{2} \int_o^{2x-4} \int_0^{4-2x+y} 6xy \; dz \, dy \, dx$$
+    \\
+    Using Sage we find the answer is: $\frac{64}{5}$
+    
+    \item Evaluate the triple integral $$\int_{-1}^1 \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \int_{x^2+y^2}^{2-x^2-y^2} (x^2+y^2)^{3/2} \; dz \, dy \, dx$$
+    \\
+    \textbf{Solution:}
+    \\
+    First change to cylindrical coordinates.
+    \\
+    $$\int_{0}^1 \int_{0}^{2 \pi} \int_{r^2}^{2-r^2} r^4 \; dz \, d \theta \, dr$$
+    \\
+    $$\int_{0}^1 \int_{0}^{2 \pi} r^4z |_{r^2}^{2-r^2} \;  d \theta \, dr$$
+    \\
+    $$\int_{0}^1 \int_{0}^{2 \pi} 2r^4-2r^6 \;  d \theta \, dr$$
+    \\
+    $$\int_{0}^1  (2r^4-2r^6) \theta |_{0}^{2 \pi} \;   dr$$
+    \\
+    $$\int_{0}^1  (4 \pi r^4-4 \pi r^6) \;   dr$$
+    \\
+    $$(\frac{4 \pi}{5} r^5-\frac{4 \pi}{7} r^7)|_{0}^(1) $$
+    \\
+    $$\frac{4 \pi}{5}-\frac{4 \pi}{7}$$
+    
+    
+    \item Find rectangular coordinates for the point $(8,\pi/4, \pi/3)$ and then rewrite the cone $z^2 = x^2 + y^2$ in spherical coordinates.  
+\\
+\textbf{Solution:}
+\\
+$x=8(\frac{\sqrt{3}}{2})(\frac{\sqrt{2}}{2})$
+\\
+$y=8(\frac{\sqrt{3}}{2})(\frac{\sqrt{2}}{2})$
+\\
+$z=8(\frac{1}{2})=4$
+\\ \\
+$\rho^2\cos^2 \phi =\rho^2\sin^2 \phi \cos^2 \theta + \rho^2 \sin^2 \phi \sin^2 \theta $
+\\
+$\cos^2 \phi = \sin^2 \phi \cos^2 \theta + \sin^2 \phi \sin^2 \theta$
+\\
+$\cos^2 \phi = \sin^2 \phi (\cos^2 \theta + \sin^2 \theta)$
+\\
+$\cos^2 \phi = \sin^2 \theta$
+
+
+
+
+\end{enumerate}
+\end{document}
+
+

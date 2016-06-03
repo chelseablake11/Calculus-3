@@ -1,0 +1,373 @@
+\documentclass[11pt]{article}
+
+\usepackage{epsfig}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{theorem}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{color}
+\usepackage{pgfplots}
+
+\definecolor{stainlessSteel}{cmyk}{0,0,0.02,0.12}
+%\usepackage{layout}% if you want to see the layout parameters
+                     % and now use \layout command in the body
+
+% This is the stuff for normal spacing
+\makeatletter
+ \setlength{\textwidth}{6.5in}
+ \setlength{\oddsidemargin}{0in}
+ \setlength{\evensidemargin}{0in}
+ \setlength{\topmargin}{0.25in}
+ \setlength{\textheight}{8.25in}
+ \setlength{\headheight}{0pt}
+ \setlength{\headsep}{0pt}
+ \setlength{\marginparwidth}{59pt}
+
+ \setlength{\parindent}{0pt}
+ \setlength{\parskip}{5pt plus 1pt}
+ \setlength{\theorempreskipamount}{5pt plus 1pt}
+ \setlength{\theorempostskipamount}{0pt}
+ \setlength{\abovedisplayskip}{8pt plus 3pt minus 6pt}
+ \setlength{\intextsep}{15pt plus 3pt minus 6pt}
+
+ \renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                   {2ex plus -1ex minus -.2ex}%
+                                   {1.3ex plus .2ex}%
+                                   {\normalfont\Large\bfseries}}%
+ \renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\large\bfseries}}%
+ \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+ \renewcommand\paragraph{\@startsection{paragraph}{4}{0mm}%
+                                    {1ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+ \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {2.0ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\newcounter{thelecture}
+
+\newenvironment{proof}{{\bf Proof:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofof}[1]{{\bf Proof of #1:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofofnobox}[1]{{\bf#1:  }}{}
+\newenvironment{example}{{\bf Example:  }}{\hfill\rule{0mm}{0mm}} % change 2mm 2mm for square
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}[fact]{Lemma}
+\newtheorem{theorem}[fact]{Theorem}
+\newtheorem{definition}[fact]{Definition}
+\newtheorem{corollary}[fact]{Corollary}
+\newtheorem{proposition}[fact]{Proposition}
+\newtheorem{claim}[fact]{Claim}
+\newtheorem{exercise}[fact]{Exercise}
+
+% math notation
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\N}{\ensuremath{\mathbb N}}
+\newcommand{\B}{\ensuremath{\mathbb B}}
+\newcommand{\F}{\ensuremath{\mathcal F}}
+\newcommand{\SymGrp}{\ensuremath{\mathfrak S}}
+\newcommand{\prob}[1]{\ensuremath{\text{{\bf Pr}$\left[#1\right]$}}}
+\newcommand{\expct}[1]{\ensuremath{\text{{\bf E}$\left[#1\right]$}}}
+\newcommand{\size}[1]{\ensuremath{\left|#1\right|}}
+\newcommand{\ceil}[1]{\ensuremath{\left\lceil#1\right\rceil}}
+\newcommand{\floor}[1]{\ensuremath{\left\lfloor#1\right\rfloor}}
+\newcommand{\ang}[1]{\ensuremath{\langle{#1}\rangle}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\polylog}{\operatorname{polylog}}
+
+% anupam's abbreviations
+\newcommand{\e}{\epsilon}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\junk}[1]{}
+\newcommand{\sse}{\subseteq}
+\newcommand{\union}{\cup}
+\newcommand{\meet}{\wedge}
+\newcommand{\dist}[1]{\|{#1}\|_{\text{dist}}}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\embeds}[1]{\;\lhook\joinrel\xrightarrow{#1}\;}
+\newcommand{\mnote}[1]{\normalmarginpar \marginpar{\tiny #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document begins here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hwheadings}[3]{
+{\bf Calculus 200 -  Fall 2015} \hfill {{\bf Problem Set #1}}\\
+{{\bf } #2} \hfill {{\bf Due:} #3} \\
+\rule[0.1in]{\textwidth}{0.025in}
+%\thispagestyle{empty}
+}
+
+\begin{document}
+
+\hwheadings{6}{NAME}{Oct 28, 2015}
+
+
+\begin{enumerate}
+
+
+    
+    
+    
+    \item Let $f(x,y) = \frac{x^3+y^3}{xy^2}$.  Set $y=mx$ and show that the resulting limit depends on $m$, and therefore the limit $\lim \limits_{(x,y) \to (0,0)} f(x,y)$ does not exist.
+    \\
+    \textbf{Answer:}
+    Let $x=0$ and $y \rightarrow 0$ $ \frac{o^3+y^3}{0y^2}=\frac{y^2}{0}=$ Does not exist.
+    \\
+    Now let $x \rightarrow 0$ and $y=0$  $\frac{x^3+0^3}{x0^2}=\frac{x^3}{0}=$ Does not exist.
+    \\
+    Lets say $y=mx$ we substiute it in and get $ \frac{x^3+(mx)^3}{x(mx)^2}= \frac{x^3+m^3x^3}{xm^2x^2}=\frac{x^3(1+m^3)}{x^3m^2}=\frac{1+m^3}{m^2}$ We then see that $m$ can not be reduced from the equation, therefore the fraction is always dependent on $m$. Because $m=\frac{y}{x}$ we can see that no matter if $x$ or $y$ is equal to zero, the limit will not exist.
+    
+    \item Find the limit by using polar coordinates:
+    
+    \[ \lim_{(x,y) \to (0,0)}  \frac{\sqrt{x^2+y^2}}{\sin \sqrt{x^2+y^2}} \]
+    \\
+    \textbf{Answer:}
+    From the defintion of polar equations, we see that $ \frac{\sqrt{x^2+y^2}}{\sin \sqrt{x^2+y^2}} = \frac{r}{\sin r}$ so we want to take the limit:
+    \[
+    \lim_{(r,\theta) \to (0,0)} \frac{r}{\sin r}
+    \]
+   Because there is no $\theta$ in the equation we can just say
+   \[
+    \lim_{r \to 0} \frac{r}{\sin r}
+    \]
+    as $r \rightarrow 0$ we see that the limit approuches $1$
+    
+    
+    
+    
+   % \item Prove  or disprove the existence of the limit:
+    %\[ \lim_{(x,y) \to ()} \]
+    
+    
+    
+    \item Let $f(x,y) = \frac{y^2}{(1+x^2)^3}$.  Calculate $f_x(1,3)$ and $f_y(1,3)$.
+    \textbf{Answer:}
+    We can say that $\frac{y^2}{(1+x^2)^3}= y^2(1+x^2)^{-3}$
+    \\
+    $f_x=-3y^2 2x (1+x^2)^{-2}=\frac{-3y^2 2x}{(1+x^2)^{2}}$
+    \\
+    $f_x(1,3)=\frac{-3(3)^2 2(1)}{(1+(1)^2)^{2}}=-13 \frac{1}{2}$
+    \\
+    $f_y=2y(1+x^2)^{-3}=\frac{2y}{(1+x^2)^3}$
+    \\
+    $f_y(1,3)=\frac{2(3)}{(1+(1)^2)^3}=\frac{3}{4}$
+    
+    
+    \item Calculate $f_z(0,0,1,1)$ where $f(x,y,z,w) = \frac{e^{xz+y}}{z^2+w}$.
+    \\
+    $f_z=-e^{xyz+y}(z^2+w)^{-2}2z+xye^{xyz+y}(z^2+w)^{-1}= \frac{-e^{xyz+y}2z}{(z^2+w)^{2}}+\frac{xye^{xyz+y}}{z^2+w}$
+    \\
+    $f_z(0,0,1,1) \frac{-e^{xyz+y}2z}{(z^2+w)^{2}}+\frac{xye^{xyz+y}}{z^2+w}= \frac{-e^0 2}{2^2} + 0 = \frac{1}{2}$
+    
+    
+    \item A process called \textbf{tag-and-recapture} is used to estimate populations of animals in the wild.  First, some number $T$ of the animals are captured, tagged and released into back into the wild.  Later, a number $N$ animals are captured, of which $t$ are observed to be tagged.  The estimate of the total population is then $P(T, N, t) = \frac{TN}{t}$.  Compute $P(100, 60, 15)$.  The proportion of the tagged animals in the recapture is $\frac{15}{60} = \frac{1}{4}$.  Based on this estimate of the total population, what proportion of the total population has been tagged?  Now computer $\frac{\partial P}{\partial t}(100, 60, 15)$ and use it to estimate how much your population estimate would change if one more recatured animal were tagged.
+    \textbf{Answer:}
+    $P(T,N,t)=\frac{TN}{t}$
+    \\
+    $P(100,60,15)= \frac{(100)(60)}{15}=400$
+    \\
+    $\frac{100}{400}=\frac{1}{4}$
+    \\
+    $\frac{\delta P}{\delta t}(100,60,15)=\frac{-TN}{t^2}=-\frac{(100)(60)}{15^2}=\frac{80}{3}$ Therefor it would go down by $\frac{80}{3}$
+    \\
+    This would mean that the total population would go down by about 26.
+    \\
+    If we plug in $P(100,60,16)$ we get $375$, which is down 25 from our original population, therefore our model is a sufficent estimate.
+    
+    
+    
+    
+    
+    \item Show the function $f_n(x,t) = \sin n\pi x \cos n \pi ct$ satisfy the \textbf{wave equation} 
+    \[ c^2 \frac{\partial^2 f}{\partial x^2} = \frac{\partial^2 f}{\partial t^2},  \]
+   for any positive integer $n$ and any constant $c$.
+   \\
+   
+   \textbf{Answer:}
+   \\
+   $f_n(x,t) = \sin n\pi x \cos n \pi ct$
+   \\
+   $f_n= \sin (n \pi x)(- \pi c t \sin (n \pi ct))+ \cos(n \pi ct)(\pi x \cos (n \pi x))$
+   \\
+   $f_{nx}=-n\pi \cos (n \pi x)(- \pi c t \sin (n \pi c t))+ \cos (n \pi c t)(\pi \cos (n \pi x)- \pi^2 xn \sin (n \pi x))$
+   
+   \\
+   $f_{nt}= \sin (n \pi x)(- \pi c \sin (n \pi ct)-n \pi^2 c^2 t \cos (n \pi ct))- n \pi c \sin (n \pi c t)(\pi x \cos (n \pi x)) $
+   \\
+   We want to show that $c^2f_{nx}=f_{nt}$
+   \\
+   $c^2(-n\pi \cos (n \pi x)(- \pi c t \sin (n \pi c t))+ \cos (n \pi c t)(\pi \cos (n \pi x)- \pi^2 xn \sin (n \pi x)))=(\sin (n \pi x)(- \pi c \sin (n \pi ct)-n \pi^2 c^2 t \cos (n \pi ct))- n \pi c \sin (n \pi c t)(\pi x \cos (n \pi x)))$
+   \\
+   \\
+   $-c^2n\pi \cos (n \pi x)(- \pi c t \sin (n \pi c t))+ c^2 \cos (n \pi c t)(\pi \cos (n \pi x)- c^2 \pi^2 xn \sin (n \pi x))=\sin (n \pi x)(- \pi c \sin (n \pi ct)-n \pi^2 c^2 t \cos (n \pi ct))- n \pi c \sin (n \pi c t)(\pi x \cos (n \pi x))$
+   \\
+   This can be reduced to equal each other.
+   
+    
+    \item Show that if $f(x)$ is a function with a continuous second derivative, then $f(x-ct)$ and $f(x+ct)$ are both solutions of the wave equation.  If $x$ represents position and $t$ represents time, explain why $c$ can be interpreted as teh velocity of the wave.  
+    \\
+    \textbf{Answer:}
+    \\
+    Prove that $f(x+ct)$ satisfies 
+     \[ c^2 \frac{\partial^2 f}{\partial x^2} = \frac{\partial^2 f}{\partial t^2},  \]
+     $f(x+ct) \; \; \; \;$ $f_x=f'(x+ct)$
+     \\
+     $f_{xx}=f''(x+ct)$
+     \\
+     $f_t=f'(x+ct)c$
+     \\
+     $f_{tt}=f''(x+ct)c^2$
+     \\
+     $c^2f''(xx+ct)=f''(x+ct)c^2 \checkmark$
+    
+    
+    \item In a chemical reaction, the temperature $T$, entropy $S$, Gibbs free enger $G$, and enthalpy $H$ are related by $G = H - TS$.  Show that $\frac{\partial(G/T)}{\partial T} =  - \frac{H}{T^2}$.
+    \\
+    \textbf{Answer:}
+    \\
+    $G=H-TS$
+    \\
+    $(G/T)=\frac{H}{T}-S$
+    \\
+    $\frac{\partial(G/T)}{\partial T}=-\frac{H}{T^2}$
+    
+    
+    \item Suppose that the concentration of some pollutant in a river as a function of position $x$ and time $t$ is given by $p(x,t) = p_0 (x-ct) e^{-\mu t}$ for constants $p_0, \mu,$ and  $c$.  Show that $\frac{\partial p}{\partial t} = -c \frac{\partial p}{\partial x} - \mu p$.  Interpret both $\frac{\partial p_0}{\partial x}$ and  $\frac{\partial p}{\partial t}$, and explain how this equation relates to the change in pollution at a specific location to the current of the river and the rate at which the pollutant decays.
+    \\
+    \textbf{Answer:}
+    \\
+     $p(x,t) = p_0 (x-ct) e^{-\mu t}$
+     \\
+     $\frac{\partial p}{\partial t}=p_0e^{-\mu t}(-c)+  p_0 -\mu (x-ct) e^{-\mu t}$
+     \\
+    $\frac{\partial p}{\partial x}=P_0(1)e^{-\mu t}   $
+    \\
+    We want to show that  $\frac{\partial p}{\partial t} = -c \frac{\partial p}{\partial x} - \mu p$ or $p_0e^{-\mu t}(-c)+  p_0 -\mu (x-ct) e^{-\mu t}=-c(P_0(1)e^{-\mu t})- \mu p_0$
+    \\
+    $p_0e^{-\mu t}(-c)+  p_0 -\mu (x-ct) e^{-\mu t}=p_0e^{-\mu t}(-c)+  p_0 -\mu (x-ct) e^{-\mu t} \checkmark$
+    
+    \item Suppose $f(x,y) = x^2 e^y$, $x(t) = t^2 - 1$, and $y(t) = \sin t$, find the derivative of $g(t) = f(x(t), y(t))$.
+    \\
+    \textbf{Answer:}
+\\
+$g(t)'=\frac{\partial g(t)}{\partial x} \frac{dx}{dt} + \frac{\partial g(t)}{\partial y} \frac{dy}{dt}$
+\\
+$\frac{\partial g(t)}{\partial x}= 2xe^y$
+\\
+$\frac{\partial g(t)}{\partial y}= x^2e^y$
+\\
+$\frac{dx}{dt}=2t$
+\\
+$\frac{dy}{dt}= \cos (t)$
+\\
+Therefore
+\\
+$g(t)'=(2xe^y)(2t)+(x^2e^y)(\cos (t)= 4txe^y+x^2e^y \cos (t)$
+
+
+
+
+    \item The Environmental Protection Agency uses the 55/45 rule for combining a car's highway gas mileage rating $h$ and its city gas mileage rating $c$ into a single rating $R$ for fuel efficiency using the formula
+    \[ 
+        R = \frac{1}{0.55/c + 0.45/h}
+    \]
+    Find the first-order Taylor series for $R(c,h)$ about $(1,1)$.  Hint: Let $a$ and $b$ be constants; find Taylor series for $f(u) = R(c+au, h+au)$ about $u=0$. 
+    \\
+    \textbf{Answer:}
+    \\
+    $T=R(1,1)+R_c(1,1)(c-1)+R_h(1,1)(h-1)$
+    \\
+    $R(1,1)=\frac{1}{0.55/1 + 0.45/1}=\frac{1}{1}=1$
+    \\
+    $R_c=\frac{-1}{-.55/c^2 (.55/c +.45/h)^2}$
+    \\
+    $R_c(1,1)=\frac{-1}{-.55/1^2 - (.55/1 +.45/1)^2}=\frac{-1}{-.55  (.55 +.45)^2}= \frac{-1}{-.55(1)}= \frac{1}{.55} $
+    \\
+    $R_h= \frac{-1}{-.45/h^2 (.55/c +.45/h)^2} $
+    \\
+    $R_h(1,1)=\frac{-1}{-.45/1^2 (.55/1+.45/1)^2}= \frac{-1}{-.45 (.55 +.45)^2}=\frac{1}{.45}$
+    \\
+    $T= \frac{1}{.55}(c-1)+\frac{1}{.45}(h-1)$
+    \\
+    $T=\frac{1}{.55}c - \frac{1}{.55} + \frac{1}{.45}h -\frac{1}{.45}$
+   
+    
+    
+    
+    
+    
+    
+    \item Suppose $f(x,y) = e^{xy}$, $x(u,v) = 3u \sin v$ and $y(u,v) = 4v^2u$.  For $g(u,v) = f(x(u,v), y(u,v))$, find the partial derivatives $\frac{\partial g}{\partial u}$ and $\frac{\partial g}{\partial v}$.
+    \\
+    \textbf{Answer:}
+    \\
+    $\frac{\partial g}{\partial u}=\frac{\partial g}{\partial x} \frac{\partial x}{\partial u}+ \frac{\partial g}{\partial y} \frac{\partial y}{\partial u}$
+    \\
+    $\frac{\partial g}{\partial x}=ye^{xy}$
+    \\
+    $\frac{\partial x}{\partial u}=3 \sin (v)$
+    \\
+    $\frac{\partial g}{\partial y}=xe^{xy}$
+    \\
+    $\frac{\partial y}{\partial u}=4v^2$
+    \\
+    $\frac{\partial g}{\partial u}=(ye^{xy})(3 \sin (v))+(=xe^{xy})(4v^2)$
+    
+    \\
+    \\
+    $\frac{\partial g}{\partial v}=\frac{\partial g}{\partial x}\frac{\partial x}{\partial v}+\frac{\partial g}{\partial y}\frac{\partial y}{\partial v}$
+    \\
+    $\frac{\partial g}{\partial x}=ye^{xy}$
+    \\
+    $\frac{\partial x}{\partial v}=3u \cos(v)$
+    \\
+    $\frac{\partial g}{\partial y}=xe^{xy}$
+    \\
+    $\frac{\partial y}{\partial v}=8vu$
+    \\
+    $\frac{\partial g}{\partial v}=(ye^{xy})(3u \cos(v))+ (xe^{xy}) (8vu) $
+    
+    
+    
+    
+    \item Find the directional derivative $D_{{\bf u}}f(1, -1)$ when $f(x,y) = x^2 + y^2$ for ${\bf u}$ in the direction $\langle -3, 4 \rangle$. 
+    \\
+    \textbf{Answer:}
+    \\
+    Make the direction vector into a directional unit vector by setting ${\bf u}=\frac{\bf u}{||u||}$
+    \\
+    $\langle \frac{-3}{5}, \frac{4}{5} \rangle$
+    \\
+    
+    $D_{{\bf u}}f(a, b)=f_x u_1+f_y u_2$ where $u_1,u_2$ at the components of the direction unit vector. Therefore:
+    \\
+    $D_{{\bf u}}f(1, -1)=f_x(\frac{-3}{5})+f_y(\frac{4}{5})$
+    \\
+    $f_x=2x$
+    \\
+    $f_y=2y$
+    \\
+    $D_{{\bf u}}f(1, -1)=2x(\frac{-3}{5})+2y(\frac{4}{5})=\frac{-6}{5}x+\frac{8}{5}y$
+    
+\end{enumerate}
+\end{document}
+
+

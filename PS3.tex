@@ -1,0 +1,463 @@
+\documentclass[11pt]{article}
+
+\usepackage{epsfig}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{theorem}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{color}
+\usepackage{pgfplots}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+
+
+\definecolor{stainlessSteel}{cmyk}{0,0,0.02,0.12}
+%\usepackage{layout}% if you want to see the layout parameters
+                     % and now use \layout command in the body
+
+% This is the stuff for normal spacing
+\makeatletter
+ \setlength{\textwidth}{6.5in}
+ \setlength{\oddsidemargin}{0in}
+ \setlength{\evensidemargin}{0in}
+ \setlength{\topmargin}{0.25in}
+ \setlength{\textheight}{8.25in}
+ \setlength{\headheight}{0pt}
+ \setlength{\headsep}{0pt}
+ \setlength{\marginparwidth}{59pt}
+
+ \setlength{\parindent}{0pt}
+ \setlength{\parskip}{5pt plus 1pt}
+ \setlength{\theorempreskipamount}{5pt plus 1pt}
+ \setlength{\theorempostskipamount}{0pt}
+ \setlength{\abovedisplayskip}{8pt plus 3pt minus 6pt}
+ \setlength{\intextsep}{15pt plus 3pt minus 6pt}
+
+ \renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                   {2ex plus -1ex minus -.2ex}%
+                                   {1.3ex plus .2ex}%
+                                   {\normalfont\Large\bfseries}}%
+ \renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\large\bfseries}}%
+ \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+ \renewcommand\paragraph{\@startsection{paragraph}{4}{0mm}%
+                                    {1ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+ \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {2.0ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\newcounter{thelecture}
+
+\newenvironment{proof}{{\bf Proof:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofof}[1]{{\bf Proof of #1:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofofnobox}[1]{{\bf#1:  }}{}
+\newenvironment{example}{{\bf Example:  }}{\hfill\rule{0mm}{0mm}} % change 2mm 2mm for square
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}[fact]{Lemma}
+\newtheorem{theorem}[fact]{Theorem}
+\newtheorem{definition}[fact]{Definition}
+\newtheorem{corollary}[fact]{Corollary}
+\newtheorem{proposition}[fact]{Proposition}
+\newtheorem{claim}[fact]{Claim}
+\newtheorem{exercise}[fact]{Exercise}
+
+% math notation
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\N}{\ensuremath{\mathbb N}}
+\newcommand{\B}{\ensuremath{\mathbb B}}
+\newcommand{\F}{\ensuremath{\mathcal F}}
+\newcommand{\SymGrp}{\ensuremath{\mathfrak S}}
+\newcommand{\prob}[1]{\ensuremath{\text{{\bf Pr}$\left[#1\right]$}}}
+\newcommand{\expct}[1]{\ensuremath{\text{{\bf E}$\left[#1\right]$}}}
+\newcommand{\size}[1]{\ensuremath{\left|#1\right|}}
+\newcommand{\ceil}[1]{\ensuremath{\left\lceil#1\right\rceil}}
+\newcommand{\floor}[1]{\ensuremath{\left\lfloor#1\right\rfloor}}
+\newcommand{\ang}[1]{\ensuremath{\langle{#1}\rangle}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\polylog}{\operatorname{polylog}}
+
+% anupam's abbreviations
+\newcommand{\e}{\epsilon}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\junk}[1]{}
+\newcommand{\sse}{\subseteq}
+\newcommand{\union}{\cup}
+\newcommand{\meet}{\wedge}
+\newcommand{\dist}[1]{\|{#1}\|_{\text{dist}}}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\embeds}[1]{\;\lhook\joinrel\xrightarrow{#1}\;}
+\newcommand{\mnote}[1]{\normalmarginpar \marginpar{\tiny #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document begins here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hwheadings}[3]{
+{\bf Chelsea Blake Calculus 200 -  Fall 2015} \hfill {{\bf Problem Set #1}}\\
+{{\bf } #2} \hfill {{\bf Due:} #3} \\
+\rule[0.1in]{\textwidth}{0.025in}
+%\thispagestyle{empty}
+}
+
+\begin{document}
+
+\hwheadings{3}{Vectors and Vector Calculus }{Sept 23, 2015}
+
+
+\begin{enumerate}
+
+ \item Verify that $4(x \cdot y) = || x+y||^2 - ||x-y||^2$.
+ \\
+ Answer: We know that:
+ \\
+ $|| x+y||^2=(x+y) \cdot (x+y)$
+ \\
+ And:
+ \\
+ $ ||x-y||^2 = (x-y) \cdot (x-y)$
+ \\
+ Therefore
+ \\
+ $|| x+y||^2 - ||x-y||^2= (x+y) \cdot (x+y) -  (x-y) \cdot (x-y)$
+ \\
+ $x \cdot x + 2(x \cdot y) + y \cdot y - (x \cdot x - 2(x \cdot y) + y \cdot y)$
+ \\
+  $|| x+y||^2 - ||x-y||^2= 4(x \cdot y)$
+
+ \item Prove the Triangle Inequality $||x+y|| \le ||x|| + ||y||$ 
+ \\
+ Answer:
+ \\
+ $||x+y||^2=(x+y) \cdot (x+y)$
+ \\
+  $||x+y||^2= x \cdot x + x \cdot y + y \cdot x + y \cdot y$
+  \\
+   $||x+y||^2= x \cdot x + 2(x \cdot y)+ y \cdot y$
+   \\
+    $||x+y||^2= ||x||^2 + 2(x \cdot y) + ||y||^2$
+    \\
+    $||x+y||^2 \le ||x||^2 + |2(x \cdot y)| + ||y||^2$
+    \\
+    $||x+y||^2 \le ||x||^2 + 2 ||x|| \cdot ||y|| + ||y||^2$
+ \\
+ $||x||^2 + 2 ||x|| \cdot ||y|| + ||y||^2 = (||x||+||y||)^2$
+ \\
+ $||x+y||^2 \le (||x||+||y||)^2$
+ \\
+  $||x+y|| \le (||x||+||y||)$
+ 
+ 
+ \item Compute the dot product ${\bf a} \cdot {\bf b}$ for ${\bf a} = \langle 1,2,3 \rangle$ and ${\bf b} = \langle 5,-3,4 \rangle$.
+ \\
+ Answer:
+ \\
+ $(1 \times 5)+ (2 \times -3)+ (3 \times 4)$
+ \\
+ $5-6+12=11$
+ 
+ 
+ \item Find the angle between the vectors $\langle 2,1,-3 \rangle$ and $ \langle 1,5,6 \rangle$.
+ \\
+ Answer:
+ \\
+ $x \cdot y = ||x|| \times ||y|| \times \cos \theta$
+ \\
+ $\langle 2,1,-3 \rangle \cdot \langle 1,5,6 \rangle = \sqrt{2^2+1^2+3^2} \times \sqrt{1^2+5^2+6^2} \times \cos \theta $
+ \\
+ $2+5-18= \sqrt{14} \times \sqrt{62} \times \cos \theta $
+ \\
+ $-11=\sqrt{868} \cos \theta$
+ \\
+ $\frac{-11}{\sqrt{868}}= \cos \theta $
+ \\
+ $\theta= \cos^{-1}\frac{-11}{\sqrt{868}} $
+ \\
+ $\theta= 1.9$ rad or $\theta = 111.9^{o} $
+ 
+ 
+ 
+ 
+ \item Find the projection of ${\bf a} = \langle 2,3 \rangle$ onto ${\bf b} = \langle -1,5 \rangle$.
+ \\
+ Answer:
+ \\
+ $\frac{a \cdot b}{|b|^2} \times b $
+ \\
+ $\frac{(2)(-1)+(3)(5)}{(-1)^2+(5)^2} \times (-1,5) $
+ \\
+ $\frac{1}{2} \times (-1,5) $
+ \\
+ $(\frac{-1}{2}, \frac{5}{2}) $
+ 
+ 
+ \item Compute $\langle 1, 2, 3 \rangle \times \langle 4, 5, 6 \rangle$.
+ \\
+ Answer:
+ \\
+ $\langle 1, 2, 3 \rangle \times \langle 4, 5, 6 \rangle= \langle 2 \times 6 - 3 \times 5, 3 \times 4 - 1\times 6, 1 \times 5 - 2 \times 4 \rangle $
+ \\
+ $=\langle 12-15, 12-6, 5 - 8 \rangle$
+ \\
+ $=\langle -3, 6, -3 \rangle$
+ 
+ 
+ 
+ 
+ \item Use the Cauchy-Schwartz inequality in $n$ dimensions to show that $\sum \limits_{k=1}^n |a_k| \le \sqrt{n} \left(\sum \limits_{k=1}^n a_k^2 \right)^{1/2}$.  Then use this result to prove that if $p_1, p_2, \dots , p_n$ are non-negative numbers that sum to $1$, then $\sum \limits_{k=1}^n p_k^2 \ge \frac{1}{n}$.
+ \\
+ Answer:
+ \\
+ Cauchy-Shwartz inequality: $|x \cdot y| \le ||x|| ||y|| $
+\\
+$||x||= \sqrt{\sum \limits_{k=1}^{n} x_k^2}$
+\\
+$||y||= \sqrt{\sum \limits_{k=1}^{n} y_k^2}$
+\\
+Let $x = \langle 1,1,1,1,1.....,1 \rangle$
+\\
+and $ y= \langle |a_1|,|a_2|,.....,|a_n| \rangle$
+ \\
+ $|x \cdot y|= x \cdot y$
+ \\
+ $= \sum \limits_{k=1}^{n} |a_k| \le \sqrt{n} (\sqrt{\sum \limits_{k=1}^{n} a_k^2})$
+ \\
+ p_i=|a_i|
+ \\
+ $\sum \limits_{i=1}^{n} |p_i| \le \sqrt{n} (\sqrt{\sum \limits_{i=1}^{n} p_i^2})$
+ \\
+ $\frac{1}{n} \le \sum \limits_{i=1}^{n} p_i^2}
+ 
+ 
+ 
+ 
+ 
+ \item Prove that for any vectors ${\bf a}$ and ${\bf b}$ in $\R^3$, ${\bf a} \times {\bf b}$ is orthogonal to both ${\bf a}$ and ${\bf b}$.
+ \\
+ Answer:
+ \\
+ Let $a=\langle a_1,a_2,a_3 \rangle$ and $b= \langle b_1, b_2, b_3 \rangle$
+ \\
+ $a \cdot (a \times b)=$
+ \\
+ $ a \cdot \lanlge a_2 b_3 - a_3 b_2, a_3 b_1 - a_1 b_3, (a_1 b_2 - a_2 b_1 \rangle$
+ \\
+ $a_1(a_2 b_3 - a_3 b_2) + a_2 (a_3 b_1 - a_1 b_3) + a_3 (a_1 b_2 - a_2 b_1)$
+
+ \\
+$a_1 a_2 b_3 - a_1 a_3 b_2 + a_2 a_3 b_1 - a_1 a_2 b_3 + a_1 a_3 b_2 - a_2 a_3 b_1= 0$
+\\
+The same can be seen for  $b \cdot (a \times b)=$
+\\
+$ b \cdot \lanlge a_2 b_3 - a_3 b_2, a_3 b_1 - a_1 b_3, (a_1 b_2 - a_2 b_1 \rangle$
+\\
+ $b_1(a_2 b_3 - a_3 b_2) + b_2 (a_3 b_1 - a_1 b_3) + b_3 (a_1 b_2 - a_2 b_1)$
+ \\
+ $b_1 a_2 b_3 - b_1 a_3 b_2 + b_2 a_3 b_1 - a_1 b_2 b_3 + a_1 b_3 b_2 - a_2 b_3 b_1= 0$
+ \\
+ By definition, if the dot product is equal to zero, the vectors are orthogonal.
+
+ 
+ \item Prove that for nonzero vectors ${\bf a}$ and ${\bf b}$ in $\R^3$, if $0 \le \theta \le \pi$ is the angle between ${\bf a}$ and ${\bf b}$, then $|| {\bf a} \times {\bf b}|| = || {\bf a}|| \; || {\bf b}|| \; \sin \theta$.
+ \\
+ Answer:
+ \\
+ We know that $|| a \times b||^2= ||a||^2 ||b||^2 - (a \cdot b)^2$
+ \\
+ we also know that $(a \cdot b) = ||a|| ||b|| \cos \theta $
+ \\
+ $|| a \times b||^2= ||a||^2 ||b||^2 - (||a|| ||b|| \cos \theta)^2$
+ \\
+ $=||a||^2 ||b||^2 - ||a||^2 ||b||^2 \cos^2 \theta $
+ \\
+ $=||a||^2 ||b||^2 - (1 - \cos^2 \theta) $
+ \\
+ $|| a \times b||^2=||a||^2 ||b||^2 - \sin^2 \theta $
+ \\
+ $|| a \times b||=||a|| ||b|| - \sin \theta $
+
+
+
+
+
+
+ \item Derive a formula for area of  a parallelogram then use it to find the area formed from the vectors $\langle 1, 2, 3 \rangle$ and $\langle 4, 5, 6 \rangle$.
+ \\
+ Answer:
+ \\
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm, scale=0.75]
+\clip(0.54,2.58) rectangle (9.48,8.46);
+\draw (3.58,7.16)-- (2.72,5.28);
+\draw (2.72,5.28)-- (5.86,5.22);
+\draw (5.86,5.22)-- (6.46,7.14);
+\draw (6.46,7.14)-- (3.58,7.16);
+\draw (3.58,7.16)-- (3.5000973314948496,5.265093681563793);
+\draw (2.48,6.74) node[anchor=north west] {$a$};
+\draw (3.92,5.18) node[anchor=north west] {$||b||$};
+\draw (3.,5.98) node[anchor=north west] {$\theta$};
+\draw (3.66,6.54) node[anchor=north west] {$h=||a|| \sin \theta$};
+\draw [->] (4.74,4.72) -- (5.76,4.72);
+\draw [->] (3.8,4.74) -- (2.72,4.74);
+\begin{scriptsize}
+\draw [fill=qqqqff] (3.58,7.16) circle (1.5pt);
+\draw [fill=qqqqff] (2.72,5.28) circle (1.5pt);
+\draw [fill=qqqqff] (5.86,5.22) circle (1.5pt);
+\draw [fill=qqqqff] (6.46,7.14) circle (1.5pt);
+\draw [fill=xdxdff] (3.5000973314948496,5.265093681563793) circle (1.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{tikzpicture}
+\\
+ We know that the area for a parallelogram is the base times the height. Here we let vector $b$ be the base of the parallelogram. Vector $a$ is the diagonal line connecting the two bases. to find the height we draw a vertacle line from the uppermost point of $a$ and straight down. This line represents the height. To find this line we take the $\sin$ of the angle between $a$ and $b$ and multiply it by $a$
+ \\
+ $a= ||a|| \times ||b|| \sin \theta $
+ \\
+ This is also equal to:
+ \\
+ $||a \times b||$
+ \\
+$a = ||\langle 2(6)-3(5), 3(4) - 1(6), 1(5) - 2(4) \rangle||$
+\\
+$a  = ||\langle 12 - 15, 12 - 6, 5 - 8 \rangle||$ 
+\\
+$a = ||\langle -3, 6, -3 \rangle||$ 
+\\
+$a = \sqrt{(-3)^2+(6)^2+(-3)^2}$  
+\\
+ $a = \sqrt{54}$
+ 
+
+
+ \item 11. Find the distance from the point $(1, 2, 1)$ to the line through the points $(2, 1, -3)$ and $(2, -1, 3)$. 
+ \\
+ Answer:
+ \\
+ The line  through the points $(2, 1, -3)$ and $(2, -1, 3)$ gives you $\langle 0, -2, 6 \rangle$
+ \\
+ We then use the equation $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}$
+ \\
+ $\sqrt{(0-1)^2+(-2-2)^2+(6-3)^2}$
+ \\
+ $\sqrt{26}$
+ 
+ \item 12. Given the data set \textit{Voting}, determine how similar the voting records of (then) Senators Barack Obama and Hillary Clinton.  Describe an algorithm that would rank the similarity in voting for Barack Obama. 
+ \\
+ Answer:
+ \\
+ Similarity = $ \cos \theta= \frac{a \cdot b}{||a|| ||b||}$
+ \\
+ a (obama)= $\langle 1, -1, 1, 1, 1, -1, -1, -1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1, -1 \rangle$
+ \\
+ b (clinton)= $ \langle -1, 1, 1, 1, 0, 0, -1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1, 1 \rangle  $
+ \\
+ $a \cdot b = -1-1+1+1+0+0+1-1+1+1+1+1+1+1-1+1-1+1+1+1+1+1+1+1-1+1+1-1-1+1+1+1+1+1+1+1-1+1-1+1+1-1+1-1+1+1+1-1 $
+ \\
+  $a \cdot b = 34 $
+  \\
+  $||a||= \sqrt(46)= 6.78$
+  \\
+  $||b||= \sqrt{44}=6.633$
+  \\
+   $ \cos \theta=  \frac{34}{\sqrt{46}\sqrt{44}}$
+   \\
+   $ \cos \theta= 0.755$
+   \\
+   $75 \%$ of the time Obama and Clinton are in agreement 
+   \\
+   algerithm: find the dot product of each person and oboma and then rank them from lowest to highest.
+   
+   
+ 
+ 
+ 
+ \item 13. Derive the formula for the volume of a parallelepiped using the Cross product then use it to find the volume formed by the vectors $\langle 1, 2, 3 \rangle, \langle 4, 5, 6 \rangle$ and $\langle 7, 8, 0 \rangle$.
+ \\
+ Answer:
+ \\
+ Volume= area of base $\times$ height
+ \\
+ We found in problem 10 that the area of the base is $||a \times b||$
+ \\
+ The height is vector $c$ at the normal direction of $a \times b$ therefore, the height is $||c|| \times |\cos \theta|$ where $\theta$ is the angle between the vectore $a \times b$ and $c$
+ Finally we get:
+ \\
+ $a=||a \times b|| \times ||c|| \times |\cos \theta|$
+ \\
+ Which is also equal to 
+ \\
+ $|(a \times b) \cdot c|$ 
+ \\
+ For finding the volumed formed by the vectors $\langle 1, 2, 3 \rangle, \langle 4, 5, 6 \rangle$ and $\langle 7, 8, 0 \rangle$ we do:
+ \\
+ $|(\langle 1, 2, 3 \rangle \times \langle 4, 5, 6 \rangle) \cdot \langle 7, 8, 0 \rangle|$
+ \\
+ $\langle (2)(6)-(3)(5), (3)(4)-(1)(6), (1)(5)-(2)(4)\rangle$
+ \\
+ $\langle 12-15, 12-6, 5-8 \rangle$
+ \\
+ $\langle -3,6,-3 \rangle$
+ \\
+ $|\langle -3,6,-3 \rangle \cdot \langle 7, 8, 0 \rangle|$
+ \\
+ $(3)(7)+(6)(8)+(-3)(0) $
+ \\
+ $-21+48+0 $
+ \\
+ $|27|$
+ \\
+ $27$
+ 
+ 
+ \item 14. Determine parametric equations for a line in $\R^3$ through a point $P_1$ parallel to a vector ${\bf a}$.  Hint: Given a point $P_1=(x_1, y_1, z_1)$ on the line, use an arbitrary point on the line to find the vector parallel to ${\bf a}$. 
+ \\
+ Answer:
+ \\
+ $x_1= X_o + ta$
+ \\
+ $y_1=y_o+ tb$
+ \\
+ $z_1=z_o+tc$
+ 
+ \item We describe a plane using a point that lies in the plane and a normal vector.  Let $P_1=(x_1, y_1, z_1)$ and any other arbitrary point $P=(x,y,z)$ that lies in the plane and a vector ${\bf a} = \langle a, b, c \rangle$ normal to the plane.  Derive the equation of the plane and use it to find the equation of the plane containing the point $(1, 2, 3)$ with normal vector $\langle 4, 5, 6 \rangle$.   
+ \\
+ Answer:
+
+ \\
+$a(x-x_o)+b(y-y_o)+c(z-z_o)=0$
+\\
+$4(x-1)+5(y-2)+6(z-3)=0$
+\\
+$4x-4+5y-10+6z-18=0 $
+\\
+$4x+5y+6z=32 $
+
+
+
+
+
+
+
+\end{enumerate}
+\end{document}
+

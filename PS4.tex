@@ -1,0 +1,370 @@
+\documentclass[11pt]{article}
+
+\usepackage{epsfig}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{theorem}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{color}
+\usepackage{pgfplots}
+
+\definecolor{stainlessSteel}{cmyk}{0,0,0.02,0.12}
+%\usepackage{layout}% if you want to see the layout parameters
+                     % and now use \layout command in the body
+
+% This is the stuff for normal spacing
+\makeatletter
+ \setlength{\textwidth}{6.5in}
+ \setlength{\oddsidemargin}{0in}
+ \setlength{\evensidemargin}{0in}
+ \setlength{\topmargin}{0.25in}
+ \setlength{\textheight}{8.25in}
+ \setlength{\headheight}{0pt}
+ \setlength{\headsep}{0pt}
+ \setlength{\marginparwidth}{59pt}
+
+ \setlength{\parindent}{0pt}
+ \setlength{\parskip}{5pt plus 1pt}
+ \setlength{\theorempreskipamount}{5pt plus 1pt}
+ \setlength{\theorempostskipamount}{0pt}
+ \setlength{\abovedisplayskip}{8pt plus 3pt minus 6pt}
+ \setlength{\intextsep}{15pt plus 3pt minus 6pt}
+
+ \renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                   {2ex plus -1ex minus -.2ex}%
+                                   {1.3ex plus .2ex}%
+                                   {\normalfont\Large\bfseries}}%
+ \renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\large\bfseries}}%
+ \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+ \renewcommand\paragraph{\@startsection{paragraph}{4}{0mm}%
+                                    {1ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+ \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {2.0ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\newcounter{thelecture}
+
+\newenvironment{proof}{{\bf Proof:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofof}[1]{{\bf Proof of #1:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofofnobox}[1]{{\bf#1:  }}{}
+\newenvironment{example}{{\bf Example:  }}{\hfill\rule{0mm}{0mm}} % change 2mm 2mm for square
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}[fact]{Lemma}
+\newtheorem{theorem}[fact]{Theorem}
+\newtheorem{definition}[fact]{Definition}
+\newtheorem{corollary}[fact]{Corollary}
+\newtheorem{proposition}[fact]{Proposition}
+\newtheorem{claim}[fact]{Claim}
+\newtheorem{exercise}[fact]{Exercise}
+
+% math notation
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\N}{\ensuremath{\mathbb N}}
+\newcommand{\B}{\ensuremath{\mathbb B}}
+\newcommand{\F}{\ensuremath{\mathcal F}}
+\newcommand{\SymGrp}{\ensuremath{\mathfrak S}}
+\newcommand{\prob}[1]{\ensuremath{\text{{\bf Pr}$\left[#1\right]$}}}
+\newcommand{\expct}[1]{\ensuremath{\text{{\bf E}$\left[#1\right]$}}}
+\newcommand{\size}[1]{\ensuremath{\left|#1\right|}}
+\newcommand{\ceil}[1]{\ensuremath{\left\lceil#1\right\rceil}}
+\newcommand{\floor}[1]{\ensuremath{\left\lfloor#1\right\rfloor}}
+\newcommand{\ang}[1]{\ensuremath{\langle{#1}\rangle}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\polylog}{\operatorname{polylog}}
+
+% anupam's abbreviations
+\newcommand{\e}{\epsilon}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\junk}[1]{}
+\newcommand{\sse}{\subseteq}
+\newcommand{\union}{\cup}
+\newcommand{\meet}{\wedge}
+\newcommand{\dist}[1]{\|{#1}\|_{\text{dist}}}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\embeds}[1]{\;\lhook\joinrel\xrightarrow{#1}\;}
+\newcommand{\mnote}[1]{\normalmarginpar \marginpar{\tiny #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document begins here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hwheadings}[3]{
+{\bf Calculus 200 -  Fall 2015} \hfill {{\bf Problem Set #1}}\\
+{{\bf } #2} \hfill {{\bf Due:} #3} \\
+\rule[0.1in]{\textwidth}{0.025in}
+%\thispagestyle{empty}
+}
+
+\begin{document}
+
+\hwheadings{4}{Chelsea Blake}{Oct 2, 2015}
+
+
+\begin{enumerate}
+
+ \item Find the limit: $$ \lim_{t \to 0} \left( e^{-3t} {\bf i} + \frac{t^2}{\sin^2(t)} {\bf j} + \cos (2t) {\bf k}  \right)$$
+ \\
+ Answer:
+$\langle 1, \lim_{t \to 0}  \frac{t^2}{\sin^2(t)}, 1 \rangle  $
+\\
+$\langle 1, 1, 1 \rangle  $
+
+
+
+\item Prove $$\frac{d}{dx}[f(t) {\bf r}(t)] = f'(t) {\bf r}(t)  + f(t) {\bf r}'(t) $$   
+
+Answer: let ${\bf r}(t)= \langle a(t),b(t),c(t) \rangle$
+\\
+$[f(t){\bf r}(t)]'=[\langle f(t)a(t),f(t)b(t),f(t)c(t)]'$
+\\
+$\langle f'(t)a(t)+f(t)a'(t),f'(t)b(t)+f(t)b'(t),f'(t)c(t)+f(t)c'(t)$
+\\
+$\langle f'(t)a(t),f'(t)b(t),f'(t)c(t)\rangle + f(t)\lange a'(t),b'(t),c'(t)\rangle$
+\\
+$f'(t)\lange a(t),b(t),c(t)\rangle+ f(t)\lange a'(t),b'(t),c'(t)\rangle$
+\\
+$f'(t)  {\bf r}(t) + f(t) {\bf r}'(t)$
+
+
+
+\item Prove $$\frac{d}{dx}[{\bf r}(t) \times {\bf s}(t)] = {\bf r}'(t) \times {\bf s}(t) + {\bf r}(t) \times {\bf s}'(t)$$    
+
+
+
+
+
+\item Find the derivative of
+\\the vector valued function ${\bf r}(t) = \langle t^4, \sqrt{t+1}, 3/t^2 \rangle$.
+Answer:
+\\
+$ {\bf r}'(t)= \langle 4t^3,\frac{1}{2}(t+1)^{-\frac{1}{2}}, \frac{-6}{t^3} \rangle$
+
+
+
+
+    \item Find the domain of the vector valued functions:
+    \begin{enumerate}
+        \item ${\bf r}(t) = \langle \sqrt{4-t^2}, e^{-3t}, \ln(t+1) \rangle$
+        \\
+        Answer: $\langle t<2, \infty, t \ge 0 \rangle$ 
+        \\
+        Domain: $[0,2)$
+        \item ${\bf r}(t) = \langle t^2-t, \frac{\sin t}{\ln t}, 5 \rangle$
+        \\
+        Answer: $\langle \infty, t > 0, -- \rangle$
+        \\
+        Domain: $(0, \infty]$
+        
+       % \item ${\bf r}(t) = \langle \frac{1}{\cos \pi t}, \frac{\sin t}{t}, \frac{\ln(t)}{\sqrt{t} \rangle$
+        \item ${\bf r}(t) = \langle t^4, \sqrt{t+1}, 3/t^2 \rangle$
+        \\
+        Answer: $\langle \infty, t \ge -1, \infty \rangle$
+        \\
+        Domain $[-1, \infty]$
+    \end{enumerate}
+
+
+
+\item Find the derivative of the vector valued functions:
+    \begin{enumerate}
+        \item ${\bf r}(t) = \langle \sin t, \sin t^2, \cos t \rangle$
+        \\
+        Answer: ${\bf r}'(t) = \langle \cos t, 2t \cos t^2, -\sin t \rangle$
+        \item ${\bf r}(t) = \langle t^2-t, e^{t^2}, \sec 2t \rangle$
+        \\
+        Answer: ${\bf r}'(t) = \langle 2t-1, 2te^{t^2}, 2 \tan (2t) \sec (2t) \rangle $
+        \\
+        %\item ${\bf r}(t) = \langle \frac{1}{\cos \pi t}, \frac{\sin t}{t}, \frac{\ln(t)}{\sqrt{t} \rangle$
+        \item ${\bf r}(t) = \langle t^4, \sqrt{t+1}, 3/t^2 \rangle$
+        \\
+        Answer: ${\bf r}'(t) = \langle 4t^3, \frac{1}{2}(t+1)^{-\frac{1}{2}}\rangle$
+    \end{enumerate}
+    
+    
+    
+    \item Prove $\frac{d}{dt} [c {\bf r}(t) ] = c {\bf r}'(t)$ for  ${\bf r}(t) = \langle f(t), g(t), h(t) \rangle$.
+    \\
+    Answer: 
+    \\
+    $ [c {\bf r}(t) ]'= c' {\bf r}(t) +   c {\bf r}'(t) $ (see proof in problem 2)
+    \\
+    We know that $c$ is a constant and there derivative of a constant is $0$ so we get: 
+    \\
+    $0 {\bf r}(t) +   c {\bf r}'(t)=  c {\bf r}'(t)$
+    
+    %\item Prove $\frac{d}{dt} [f(t) {\bf r}(t) ] = f'(t) {\bf r}(t) + f(t) {\bf r}'(t)$ for  ${\bf r}(t) = \langle a(t), b(t), c(t) \rangle$.
+    
+    \item Given ${\bf r}_1(t) = \langle t^2, t^3, t \rangle$ and ${\bf r}_2(t) = \langle e^{3t}, e^{2t}, e^t \rangle$, find 
+    \begin{enumerate}
+        \item $\frac{d}{dt} [t^4 {\bf r}_1(t)]$
+        \\
+        Answer: $\frac{d}{dt} [t^4 \langle t^2, t^3, t \rangle]$
+        \\
+        $\frac{d}{dt} [\langle t^6, t^7, t^5 \rangle]$
+        \\
+        $\frac{d}{dt}= \langle 6t^5, 7t^6, 5t^4 \rangle]$
+        \item $\frac{d}{dt}  [{\bf r}_1(t) \cdot {\bf r}_2(t)]$
+        \\
+        Answer: $\frac{d}{dt} [\langle t^2, t^3, t \rangle \cdot \langle e^{3t}, e^{2t}, e^t \rangle] $
+\\
+$\frac{d}{dt} [\langle t^2e^{3t}, t^3e^{2t}, te^t \rangle $
+\\
+$\frac{d}{dt}=\langle 3t^2e^{3t}+2te^{3t}, 2t^3e^{2t}+3t^2e^{2t}, te^t+e^t \rangle$
+        
+        \item $\frac{d}{dt}  [{\bf r}_1(t) \times {\bf r}_2(t)]  $
+        \\
+        Answer: $\frac{d}{dt} [\langle t^2, t^3, t \rangle \times \langle e^{3t}, e^{2t}, e^t \rangle] $
+        \\
+        $\frac{d}{dt} [\langle t^3e^t-te^{2t}, te^{3t}-t^2e^t, t^2e^{2t}-t^3e^{3t}\rangle]$
+        \\
+        $\frac{d}{dt}=\langle t^3e^t+3t^2e^t-2te^{2t}+e^{2t}, 3te^{3t}+e^{3t}-t^2e^t+ 2te^t, 2t^2e^{2t}+2te^{2t}-3t^3e^{3t}+3t^2e^{3t}\rangle$
+        
+        
+    \end{enumerate}
+    
+    
+    
+    \item Derive the Chain Rule $\frac{d}{dt} {\bf r}(g(t))$ and use to find the derivative given:
+    
+   
+    \begin{proof}
+  $\frac{d}{dt} {\bf r}(g(t))$ Where ${\bf r}=\langle a(t),b(t),c(t)\rangle$
+  \\
+  $=\frac{d}{dt} \langle a(g(t)),b(g(t),c(g()t)\rangle$
+  \\
+    $= \langle g'(t)a'(g(t)),g'(t)b'(g(t),g'(t)c,(g(t)\rangle$
+    \\
+      $= g'(t)\langle a,(g(t)),b,(g(t),c,(g(t)\rangle$
+      \\
+      $\frac{d}{dt} {\bf r}(g(t))= g'(t) {\bf r}'(g(t)) $
+    \end{proof}
+    
+    \begin{enumerate}
+        \item ${\bf r}(t) = \langle t^2, 1-t \rangle$ and $g(t) = e^t$.
+        \\
+        Answer:  $ e^t \langle 2te^{t^2},e^t \rangle  $
+        
+        \item ${\bf r}(t) = \langle e^t, e^{2t}, 4 \rangle$ and $g(t) = 4t+9$.
+        \\
+        Answer: $4 \langle 4e^{4t+9}, 8e^{2(4t+9)},0 \rangle $
+        
+    \end{enumerate}
+
+    \item Prove that if $||{\bf r}(t) || = c \in  \mathbb{R}$, then ${\bf r}(t)$ and ${\bf r}'(t)$ are orthogonal for all $t$.
+    \\
+    To shows two things are orthogonal we must show that $r \cdot r' =0$
+    \\
+    $||r(t)||=\sqrt{r(t) \cdot r(t)}=c$
+    \\
+    $||r(t)||^2=r(t) \cdot r(t) = c^2$
+    \\
+    $(r(t) \cdot r(t))' = (c^2)'$
+    \\
+    $r'(t) \cdot r(t)+r(t) \cdot r'(t) = 0 $
+    \\
+    $2(r(t) \cdot r(t)) = 0$
+    \\
+    $(r(t) \cdot r(t)) = 0$
+    
+    
+    
+    
+    
+    
+    \item Evaluate the integrals, 
+    \begin{enumerate}
+    
+    
+        \item $\int_{-2}^2 (u^3 {\bf i} + u^5 {\bf j} \; du$
+        \\
+        Answer: $\langle \frac{1}{4}u^4|_{-2}^2, \frac{1}{6}u^6|_{-2}^2 \rangle$
+        \\
+        $\langle 0, 0$
+        
+        
+        
+        \item $\int_{0}^1 \langle 2t, 4t, -\cos 3t \rangle \; dt$
+        \\
+        Answer: $\langle t^2|_0^1, 2t^2|_0^1, -\frac{1}{3}\sin 3t |_0^1 \rangle$
+        \\
+        $\langle 1, 2, -0.047 \rangle$
+        
+
+        \item $\int \langle \frac{4}{t^2-t}, \frac{2t}{t^2+1}, \frac{4}{t^2+1} \rangle \; dt$
+        \\
+        Answer: \langle 4 ln (1-t)- ln(t)+c, ln(t^2+1)+c, 4 \tan^{-1}t+c \rangle
+
+
+
+    \end{enumerate}
+    
+    
+    
+    
+    \item Find the unit tangent vector to the curve ${\bf r}(t) = \langle t^2+1, t \rangle$.
+    \\
+    Answer:
+    $T= \frac{r'}{||r'||} $
+    \\
+    $r'= \langle 2t, 1 \langle $
+    \\
+    $\frac{\langle 2t, 1 \rangle}{||2t,1||}=\frac{\langle 2t, 1 \rangle}{\sqrt{4t^2+1}} $
+    
+    \item Find the curvature of a straight line given by ${\bf r}(t) = \langle at+b, ct+d, e t+f \rangle$.
+    \\
+    Answer: $\mathcal{K}= \frac{r' \times r''}{|r'|^3} $
+    \\
+    $r'=\langle a,c,e \rangle $
+    \\
+    $r''=\langle 0,0,0 \rangle $
+    \\
+    $|r'|^3=|\sqrt{a^2+c^2+e^2}|^3 $
+    \\
+    $\frac{\langle a,c,e \rangle \times \langle 0,0,0 \rangle}{|\sqrt{a^2+c^2+e^2}|^3} $
+    \\
+    $=0$
+    
+ 
+ \item Find the curvature of a circle given by ${\bf r}(t) = \langle a \cos t + b, a \sin t +c \rangle$.
+ \\
+ Answer:  $\mathcal{K}= \frac{r' \times r''}{|r'|^3} $
+ \\
+ center $(b,c)$ with radius $a$
+ \\
+ $r'=\langle -a\sin t+ \cos t, a\cos t + \sin t \rangle  $
+ \\
+ $r''=\langle -a\cos t- \sin t, -a\sin t - \cos t \rangle $
+ \\
+ $|r'|^3= \sqrt{(-a\sin t + cos t)^2+(a \cos t + \sin t)}^3 $
+ \\
+ $\mathcal{K}= \frac{\langle -a\sin t+ \cos t, a\cos t + \sin t \rangle \times \langle -a\cos t- \sin t, -a\sin t - \cos t \rangle}{ \sqrt{(-a\sin t + cos t)^2+(a \cos t + \sin t)}^3} $
+ \\
+  $\mathcal{K}= \frac{1}{a}$
+    
+    
+    
+
+\end{enumerate}
+\end{document}
+
+

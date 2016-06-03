@@ -1,0 +1,307 @@
+\documentclass[11pt]{article}
+
+\usepackage{epsfig}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{xspace}
+\usepackage{theorem}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{color}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+
+\definecolor{stainlessSteel}{cmyk}{0,0,0.02,0.12}
+%\usepackage{layout}% if you want to see the layout parameters
+                     % and now use \layout command in the body
+
+% This is the stuff for normal spacing
+\makeatletter
+ \setlength{\textwidth}{6.5in}
+ \setlength{\oddsidemargin}{0in}
+ \setlength{\evensidemargin}{0in}
+ \setlength{\topmargin}{0.25in}
+ \setlength{\textheight}{8.25in}
+ \setlength{\headheight}{0pt}
+ \setlength{\headsep}{0pt}
+ \setlength{\marginparwidth}{59pt}
+
+ \setlength{\parindent}{0pt}
+ \setlength{\parskip}{5pt plus 1pt}
+ \setlength{\theorempreskipamount}{5pt plus 1pt}
+ \setlength{\theorempostskipamount}{0pt}
+ \setlength{\abovedisplayskip}{8pt plus 3pt minus 6pt}
+ \setlength{\intextsep}{15pt plus 3pt minus 6pt}
+
+ \renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                   {2ex plus -1ex minus -.2ex}%
+                                   {1.3ex plus .2ex}%
+                                   {\normalfont\Large\bfseries}}%
+ \renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\large\bfseries}}%
+ \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                     {1ex plus -1ex minus -.2ex}%
+                                     {1ex plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+ \renewcommand\paragraph{\@startsection{paragraph}{4}{0mm}%
+                                    {1ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+ \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {2.0ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\newcounter{thelecture}
+
+\newenvironment{proof}{{\bf Proof:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofof}[1]{{\bf Proof of #1:  }}{\hfill\rule{2mm}{2mm}}
+\newenvironment{proofofnobox}[1]{{\bf#1:  }}{}
+\newenvironment{example}{{\bf Example:  }}{\hfill\rule{0mm}{0mm}} % change 2mm 2mm for square
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\newtheorem{fact}{Fact}
+\newtheorem{lemma}[fact]{Lemma}
+\newtheorem{theorem}[fact]{Theorem}
+\newtheorem{definition}[fact]{Definition}
+\newtheorem{corollary}[fact]{Corollary}
+\newtheorem{proposition}[fact]{Proposition}
+\newtheorem{claim}[fact]{Claim}
+\newtheorem{exercise}[fact]{Exercise}
+
+% math notation
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\N}{\ensuremath{\mathbb N}}
+\newcommand{\B}{\ensuremath{\mathbb B}}
+\newcommand{\F}{\ensuremath{\mathcal F}}
+\newcommand{\SymGrp}{\ensuremath{\mathfrak S}}
+\newcommand{\prob}[1]{\ensuremath{\text{{\bf Pr}$\left[#1\right]$}}}
+\newcommand{\expct}[1]{\ensuremath{\text{{\bf E}$\left[#1\right]$}}}
+\newcommand{\size}[1]{\ensuremath{\left|#1\right|}}
+\newcommand{\ceil}[1]{\ensuremath{\left\lceil#1\right\rceil}}
+\newcommand{\floor}[1]{\ensuremath{\left\lfloor#1\right\rfloor}}
+\newcommand{\ang}[1]{\ensuremath{\langle{#1}\rangle}}
+\newcommand{\poly}{\operatorname{poly}}
+\newcommand{\polylog}{\operatorname{polylog}}
+
+% anupam's abbreviations
+\newcommand{\e}{\epsilon}
+\newcommand{\half}{\ensuremath{\frac{1}{2}}}
+\newcommand{\junk}[1]{}
+\newcommand{\sse}{\subseteq}
+\newcommand{\union}{\cup}
+\newcommand{\meet}{\wedge}
+\newcommand{\dist}[1]{\|{#1}\|_{\text{dist}}}
+\newcommand{\hooklongrightarrow}{\lhook\joinrel\longrightarrow}
+\newcommand{\embeds}[1]{\;\lhook\joinrel\xrightarrow{#1}\;}
+\newcommand{\mnote}[1]{\normalmarginpar \marginpar{\tiny #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document begins here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\hwheadings}[3]{
+{\bf Calculus 200 -  Fall 2015} \hfill {{\bf Problem Set #1}}\\
+{{\bf } #2} \hfill {{\bf Due:} #3} \\
+\rule[0.1in]{\textwidth}{0.025in}
+%\thispagestyle{empty}
+}
+
+\begin{document}
+
+\hwheadings{2}{Chelsea Blake: Calculus of Parametric equation }{Sept 16, 2015}
+
+
+\begin{enumerate}
+
+ \item Find the parametric equations describing the given curve:
+ 
+ 
+ 
+  \begin{enumerate}
+
+    \item Line segment from $(0, 1)$ to $(3,4)$
+    \\
+    Answer: $x=t$
+    \\
+    $Y=t+1$
+    \\
+    where $0 \le t \le 3$
+    
+    \item Line segment from $(3, 1)$ to $(1,3)$
+    \\
+    Answer: $x=3-t$
+    \\
+    $y=t+1$
+    \\
+    where $0 \le t \le 2$
+  
+    \item Portion of the parabola $y=x^2+1$ from $(1, 2)$ to $(2,5)$
+    \\
+    Answer: $x=t$
+    \\
+    $y=t^2+1$
+    \\
+    where $1 \le t \le 2$
+    
+    
+   \item Circle of radius 3 centered at $(2, 1)$, counterclockwise
+\end{enumerate}   
+\\
+Answer: $x=3 \cos t +2$
+\\
+$y=3 \sin t +1$
+\\
+Where $0 \le t \le 2 \pi$
+
+
+
+    
+ \item Find parametric equations for the path of a projectile launched from height $h=16$ feet with initial speed $v = 12$ ft/s at angle $\theta = 6^\circ$ from the horizontal.   
+    
+    Answer: $h=16 V=12 \theta = 6$
+    \\
+    $y=-16t^2+1.25t+16$
+    \\
+    $y=-16t^2+12 \sin (6t) +16$
+    \\
+    $x=11.93t$
+    \\
+    $x=12 \cos (6t)$
+    
+    
+    
+    
+    
+
+
+
+     \item Find the slope of the tangent line to the curves $x=t^2-2$ and $y=t^3-t$ at
+ \begin{enumerate}
+
+   \item $t=-1$
+   \\
+   Answer: slope= $-1$
+   
+     \item $t=1$
+     \\
+     Answer: slope=$1$
+     
+   \item $(-2,0)$
+   \\
+   Answer: slope= $ \lim{t \to 0} \frac{3t^2-1}{2t}= - \infty$
+
+\end{enumerate}    
+    
+
+    
+\item Identify all points at which the curve $x=\cos 2t$ and $y=\sin 4t$ has a horizontal and vertical tangent.  
+\\
+Answer: $\frac{\frac{dy}{dt}}{\frac{dx}{dt}}$
+\\
+$y'=4 \cos (4t)$
+\\
+$x'=-2\sin (2t)$
+\\
+horizontal: $\frac{4 \cos (4t)}{-2 \sin (2t)}=0$
+\\
+$\cos (4t) =0$
+\\
+$t= \{ \frac{\pi}{8}, \frac{3\pi}{8}, \frac{5 \pi}{8}, \frac{7 \pi}{8} \}$
+\\
+$(x,y)=(\frac{\sqrt{2}}{2},1),(\frac{-\sqrt{2}}{2}, 1),(\frac{\sqrt{2}}{2},1), (\frac{-\sqrt{2}}{2}, 1)  $
+
+\\
+Vertical: find were graph is undefined, i.e. where the denominator equals 0
+\\
+$-2 \sin (2t)=0$
+\\
+$t= \{\frac{\pi}{2}, \pi \}$
+\\
+$(x,y)=(-1,1),(1,0)
+    
+    
+ \item Find the object's speed at the given time and describe its motion where $x=2 \cos t$ and $y=3 \sin t$ at $t = \frac{\pi}{2}$.   
+    \\
+    Answer: $x'=-2\sin t$
+    \\
+    $y'=3 \cos t$
+    \\
+    $\sqrt{(-2\sin(\frac{\pi}{2}))^2+(3\cos(\frac{\pi}{2}))^2}=\sqrt{4}=2$
+
+
+
+
+
+
+
+
+\item  Find the area enclosed by the curve $x=t^3 - 4t$ and $y=t^2-3$ where $-2 \le t \le 2$.
+\\
+Answer: $- \int_{\alpha}^{\beta} y(t) x'(t) dt$
+\\
+$- \int_{-2}^{2} (t^2-3)(3t^2-4) dt$
+\\
+$- \int_{-2}^{2} 3t^4-13t^2+12 dt$
+\\
+$[\frac{-3}{5}t^5+\frac{13}{3}t^3-12t]_{-2}^{2}$
+\\
+$= -\frac{256}{15}=-17.1$
+
+
+
+\item Find the arc length of the curve $x=t \cos t$ and $y = t \sin t$ for $-1 \le t \le 1$.  
+\\
+Answer: $\int_{-1}^{1} \sqrt{(-t\sin(t)+\cos(t))^2+(t\cos (t) + sin (t)^2}$
+\\
+$\sqrt{2}+\sin^-1(1)=2.29$
+
+
+\item Sketch the location of the points $(1, 1, 0), (2, 3, -1)$, and $(-1, 2, 3)$ on a single set of axes.
+\\
+*DO NOT DO*
+
+
+\item Find the lengths of the sides of the triangle with vertices $(1, 0, 1), (2, 2, -1)$, and $(-3, 2, -2)$.
+\\
+Answer:
+$\sqrt{(1-2)^2+(0-2)^2+(1-(-1))^2}=3$
+\\
+$\sqrt{(1-(-3))^2+(0-2)^2+(1-(-2))^2}=5.39$
+\\
+$\sqrt{(2-(-3))^2+(2-2)^2+(1-2)^2}=5.099$
+
+
+
+\item Find an equation of the sphere with center at $(1, 1, 1)$ and radius $2$. 
+\\
+Answer: $(x-1)^2+(y-1)^2+(z-1)^2$
+
+
+\item Describe geometrically the set of points $(x, y, z)$ that satisfy $z = 4$.
+\\
+Answer: geometrically, you would have a plane that sits up four units on the z axes.
+\item Describe geometrically the set of points $(x, y, z)$ that satisfy $y = -3$.
+\\
+Answer: geometrically, you would have a plane that sits up -3 units on the y axes.
+\item Describe geometrically the set of points $(x, y, z)$ that satisfy $x + y = 2$.
+\\
+Answer: geometrically, you would have a diagonal plane that cuts vertically in between the x and y axes. This plane hits the two axes at x=2 and y=2
+\item The equation $x + y + z = 1$ describes some collection of points in $\mathbb{R}^3$. Describe and sketch the points that satisfy $x + y + z = 1$ and are in the $x-y$ plane, in the $x-z$ plane, and in the $y-z$ plane.
+\\
+Answer: Geometrically, you would have a plane along the points $(1,0,0),(0,1,0),(0,0,1)$
+
+
+
+
+\end{enumerate}
+\end{document}
